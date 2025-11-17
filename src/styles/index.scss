@@ -1,0 +1,10 @@
+@use './foundation';
+
+html {
+  font-family: 'Mont', sans-serif;
+  color: var(--text-primary);
+}
+
+body {
+  background-color: var(--color-black);
+}

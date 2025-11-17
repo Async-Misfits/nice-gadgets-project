@@ -1,0 +1,57 @@
+@use '@/styles/mixins' as *;
+
+.h1 {
+  @include typography('Mont', 700, 48px, 56px, -0.01em);
+
+  @include mobile {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.h2 {
+  @include typography('Mont', 700, 32px, 41px, -0.01em);
+
+  @include mobile {
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+.h3 {
+  @include typography('Mont', 700, 22px, 31px);
+
+  @include mobile {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+.h4 {
+  @include typography('Mont', 600, 20px, 26px);
+
+  @include mobile {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+/* Button text */
+.button {
+  @include typography('Mont', 600, 14px, 21px);
+}
+
+/* Body text */
+.body {
+  @include typography('Mont', 400, 14px, 21px);
+}
+
+/* Small text */
+.small {
+  @include typography('Mont', 600, 12px, 15px);
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
