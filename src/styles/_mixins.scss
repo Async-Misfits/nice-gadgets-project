@@ -1,0 +1,13 @@
+@mixin typography($family, $weight, $size, $line, $spacing: 0) {
+  font-family: $family, sans-serif;
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $line;
+  letter-spacing: $spacing;
+}
+
+@mixin mobile {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
