@@ -1,7 +1,7 @@
 import React from 'react';
 import { iconMap, type IconName } from './iconMap';
 import type { IconProps } from './types';
-import './Badge.scss';
+import './icon.scss';
 
 interface CustomIconProps extends IconProps {
   name: IconName;

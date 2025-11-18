@@ -1,16 +1,16 @@
-import HomeSvg from './svgs/home.svg?react';
-// import SearchSvg from './svgs/search.svg?react';
-import MailSvg from './svgs/mail.svg?react';
-import HeartSvg from './svgs/heart.svg?react';
-import HeartFilledSvg from './svgs/heart-filled.svg?react';
-import MinusSvg from './svgs/minus.svg?react';
-import PlusSvg from './svgs/plus.svg?react';
-import XSvg from './svgs/x.svg?react';
-import ChevronLeftSvg from './svgs/chevron-left.svg?react';
-import ChevronRightSvg from './svgs/chevron-right.svg?react';
-import ChevronDownSvg from './svgs/chevron-down.svg?react';
-import ChevronUpSvg from './svgs/chevron-up.svg?react';
-import MenuSvg from './svgs/menu.svg?react';
+import HomeSvg from '../../../../../public/icons/home.svg?react';
+// import SearchSvg from '../../../../../public/icons/search.svg?react';
+import MailSvg from '../../../../../public/icons/mail.svg?react';
+import HeartSvg from '../../../../../public/icons/heart.svg?react';
+import HeartFilledSvg from '../../../../../public/icons/heart-filled.svg?react';
+import MinusSvg from '../../../../../public/icons/minus.svg?react';
+import PlusSvg from '../../../../../public/icons/plus.svg?react';
+import XSvg from '../../../../../public/icons/x.svg?react';
+import ChevronLeftSvg from '../../../../../public/icons/chevron-left.svg?react';
+import ChevronRightSvg from '../../../../../public/icons/chevron-right.svg?react';
+import ChevronDownSvg from '../../../../../public/icons/chevron-down.svg?react';
+import ChevronUpSvg from '../../../../../public/icons/chevron-up.svg?react';
+import MenuSvg from '../../../../../public/icons/menu.svg?react';
 
 export const iconMap = {
   home: HomeSvg,
