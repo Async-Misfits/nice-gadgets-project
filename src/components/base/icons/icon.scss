@@ -1,0 +1,26 @@
+.badge-wrapper {
+  position: relative;
+  display: inline-block;
+
+  .badge-item {
+    position: absolute;
+    top: 0;
+    right: 0;
+    
+    transform: translate(50%, -50%); 
+    
+    background-color: var(--color-red);
+    color: white;
+    
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    
+    display: grid;
+    place-items: center;
+    
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+  }
+}
