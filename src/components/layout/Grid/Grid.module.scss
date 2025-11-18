@@ -1,0 +1,27 @@
+@use '@/styles/mixins' as *;
+
+$gutter: 16px;
+$mobile-columns: 4;
+$tablet-columns: 12;
+$desktop-columns: 24;
+
+.grid {
+  display: grid;
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 16px;
+  gap: $gutter;
+  --columnsCount: #{$mobile-columns};
+  grid-template-columns: repeat(var(--columnsCount), 1fr);
+
+  @include tablet {
+    padding-inline: 24px;
+    --columnsCount: #{$tablet-columns};
+  }
+
+  @include desktop {
+    max-width: 1200px;
+    padding-inline: 0;
+    --columnsCount: #{$desktop-columns};
+  }
+}
