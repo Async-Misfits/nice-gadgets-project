@@ -13,6 +13,6 @@ export default defineConfig(({ mode }) => ({
   },
   base: mode === 'production' ? '/phone-catalog/' : '/',
   server: {
-    open: true, // 👈 Відкриє браузер автоматично
+    open: true,
   },
 }));
