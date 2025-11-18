@@ -13,4 +13,20 @@
 
   --text-primary: #f1f2f9;
   --text-secondary: #75767f;
+
+  --btn-primary: #905bff;
+  --btn-primary-hover: #a378ff;
+  --btn-primary-selected: var(--color-surface2);
+
+  --btn-square-bg: var(--color-surface1);
+  --btn-square-hover: var(--color-elements);
+  --btn-square-selected: var(--btn-primary);
+
+  --btn-arrow-bg: var(--color-surface2);
+  --btn-arrow-hover: var(--color-icons);
+  --btn-arrow-disabled: var(--color-elements);
+
+  --btn-icon-bg: var(--color-surface2);
+  --btn-icon-hover: var(--color-icons);
+  --btn-icon-selected: var(--color-elements);
 }
