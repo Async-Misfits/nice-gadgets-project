@@ -13,19 +13,19 @@ import ChevronUpSvg from '../../../../../public/icons/chevron-up.svg?react';
 import MenuSvg from '../../../../../public/icons/menu.svg?react';
 
 export const iconMap = {
-  home: HomeSvg,
-//   search: SearchSvg,
-  mail: MailSvg,
-  heart: HeartSvg,
+  'home': HomeSvg,
+  //   search: SearchSvg,
+  'mail': MailSvg,
+  'heart': HeartSvg,
   'heart-filled': HeartFilledSvg,
-  minus: MinusSvg,
-  plus: PlusSvg,
-  x: XSvg,
+  'minus': MinusSvg,
+  'plus': PlusSvg,
+  'x': XSvg,
   'chevron-left': ChevronLeftSvg,
   'chevron-right': ChevronRightSvg,
   'chevron-down': ChevronDownSvg,
   'chevron-up': ChevronUpSvg,
-  menu: MenuSvg,
+  'menu': MenuSvg,
 };
 
 export type IconName = keyof typeof iconMap;
