@@ -4,16 +4,16 @@ import { Typography } from '../Typography';
 
 interface DropdownOption {
   name: string | number;
-  label: string;         
+  label: string;
 }
 
 interface DropdownProps {
   options: DropdownOption[];
-  placeholder: string;       
-  value: string | number | null; 
-  onChange: (name: string | number) => void; 
-  disabled?: boolean;        
-  className?: string;        
+  placeholder: string;
+  value: string | number | null;
+  onChange: (name: string | number) => void;
+  disabled?: boolean;
+  className?: string;
 }
 /**
  * The Dropdown component (Select Menu).
@@ -32,24 +32,27 @@ const Dropdown: React.FC<DropdownProps> = ({
   value,
   onChange,
   disabled = false,
-  className = ''
+  className = '',
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const selectedOption = options.find(option => option.name === value);
+  const selectedOption = options.find((option) => option.name === value);
   const displayLabel = selectedOption ? selectedOption.label : placeholder;
 
   const handleOptionClick = (option: DropdownOption) => {
-    if (disabled) return; 
+    if (disabled) return;
 
     onChange(option.name);
-    setIsOpen(false); 
+    setIsOpen(false);
   };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false);
       }
     };
@@ -72,9 +75,9 @@ const Dropdown: React.FC<DropdownProps> = ({
         aria-expanded={isOpen}
         tabIndex={disabled ? -1 : 0}
       >
-        <Typography 
-          as='button' 
-          variant='button'
+        <Typography
+          as="button"
+          variant="button"
           className={!selectedOption ? 'placeholder-text' : ''}
         >
           {displayLabel}
@@ -95,7 +98,12 @@ const Dropdown: React.FC<DropdownProps> = ({
             aria-selected={option.name === value}
             tabIndex={0}
           >
-            <Typography as='button' variant='button'>{option.label}</Typography>
+            <Typography
+              as="button"
+              variant="button"
+            >
+              {option.label}
+            </Typography>
           </li>
         ))}
       </ul>
