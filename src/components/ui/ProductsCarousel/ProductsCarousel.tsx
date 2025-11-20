@@ -1,11 +1,15 @@
 import { useRef, useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper';
 
-import { Slider } from '../../base/Slider';
+import 'swiper/css';
+
 import { Typography } from '../../base/Typography';
+import ProductCard from '../../base/ProductCard/ProductCard';
 
 import styles from './ProductsCarousel.module.scss';
-import ProductCard from '../../base/ProductCard/ProductCard';
+import { Button } from '../../base/Button';
+import { Icon } from '../../base/icons';
 
 type ProductsCarouselProps = {
   /**
@@ -29,6 +33,28 @@ export const ProductsCarousel = ({
   const handleNext = () => swiperRef.current?.slideNext();
   const handlePrev = () => swiperRef.current?.slidePrev();
 
+  const handleSwiperInit = (instance: SwiperType) => {
+    swiperRef.current = instance;
+
+    const updateArrowsVisibility = () => {
+      const container = instance.el as HTMLElement | null; // сам Swiper
+      const parent = container?.parentElement; // наша обгортка
+
+      if (!container || !parent) {
+        setShowArrows(false);
+        return;
+      }
+
+      // Якщо контейнер ширший за видиму обгортку → є що скролити
+      const canScroll = container.scrollWidth > parent.clientWidth + 1;
+      setShowArrows(canScroll);
+    };
+
+    updateArrowsVisibility();
+    instance.on('resize', updateArrowsVisibility);
+    instance.on('slidesLengthChange', updateArrowsVisibility);
+  };
+
   return (
     <section className={styles.section}>
       <div className={styles.header}>
@@ -41,64 +67,45 @@ export const ProductsCarousel = ({
 
         {showArrows && (
           <div className={styles.controls}>
-            <button
-              type="button"
-              className={styles.arrow}
+            <Button
               onClick={handlePrev}
-              aria-label="Previous"
+              variant="squareArrow"
             >
-              ‹
-            </button>
+              <Icon name="chevron-left" />
+            </Button>
 
-            <button
-              type="button"
-              className={styles.arrow}
+            <Button
               onClick={handleNext}
-              aria-label="Next"
+              variant="squareArrow"
             >
-              ›
-            </button>
+              <Icon name="chevron-right" />
+            </Button>
           </div>
         )}
       </div>
 
-      {/* Слайдер */}
-      <Slider
-        ref={swiperRef}
+      <Swiper
+        onSwiper={handleSwiperInit}
         slidesPerView="auto"
         spaceBetween={24}
-        centeredSlides
-        centeredSlidesBounds
-        watchOverflow
-        onSwiperInit={(instance) => {
-          swiperRef.current = instance;
-
-          const update = () => {
-            setShowArrows(!instance.isLocked);
-          };
-
-          update();
-          instance.on('resize', update);
-          instance.on('slidesLengthChange', update);
-        }}
       >
         {products.map((product) => (
-          <div
+          <SwiperSlide
             key={product}
-            className={styles.slideInner}
+            className={styles.slide}
           >
             <ProductCard
               title={product}
               priceRegular={200}
               priceDiscount={200}
-              screen="test"
+              screen="TEST"
               capacity="200"
               ram="200"
               isCatalog
             />
-          </div>
+          </SwiperSlide>
         ))}
-      </Slider>
+      </Swiper>
     </section>
   );
 };
