@@ -49,6 +49,9 @@ export type SliderProps = {
    * Useful for connecting external controls (arrows, dots).
    */
   onSwiperInit?: (instance: SwiperType) => void;
+  watchOverflow?: boolean;
+  centeredSlides?: boolean;
+  centeredSlidesBounds?: boolean;
 };
 
 /**
@@ -94,6 +97,9 @@ export const Slider = forwardRef<SwiperType, SliderProps>(
       loop = false,
       className,
       onSwiperInit,
+      watchOverflow = false,
+      centeredSlides = false,
+      centeredSlidesBounds = false,
     },
     ref,
   ) => {
@@ -112,6 +118,9 @@ export const Slider = forwardRef<SwiperType, SliderProps>(
           spaceBetween={spaceBetween}
           loop={loop}
           autoHeight
+          watchOverflow={watchOverflow}
+          centeredSlides={centeredSlides}
+          centeredSlidesBounds={centeredSlidesBounds}
         >
           {Children.map(children, (child, index) => (
             <SwiperSlide

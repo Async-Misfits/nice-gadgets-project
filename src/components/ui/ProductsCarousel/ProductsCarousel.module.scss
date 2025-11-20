@@ -1,0 +1,49 @@
+.section {
+  margin-block: 40px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: transparent;
+  border-radius: 8px;
+  color: #fff;
+
+  cursor: pointer;
+  transition: 0.15s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+.slideInner {
+  width: 212px; // 👈 головне!
+  flex: 0 0 auto; // не давати займати більше ширини
+}
+
+/* На мобільному стрілки ховаються */
+@media (max-width: 639px) {
+  .controls {
+    display: none;
+  }
+}

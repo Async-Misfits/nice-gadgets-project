@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import type { Swiper as SwiperType } from 'swiper';
-import { Slider } from '../../ui/Slider/Slider';
+import { Slider } from '../../base/Slider/Slider';
 import { PromoSlide } from '../../base/PromoSlide/PromoSlide';
 import { Grid } from '../../layout/Grid';
 import styles from './MainSlider.module.scss';
