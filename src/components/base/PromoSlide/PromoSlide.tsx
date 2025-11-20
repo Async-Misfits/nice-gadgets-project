@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import type { FC } from 'react';
 import styles from './PromoSlide.module.scss';
+import { Typography } from '../Typography';
 
 type PromoSlideProps = {
   title: string;
@@ -24,10 +25,21 @@ export const PromoSlide: FC<PromoSlideProps> = ({
   return (
     <section className={classNames(styles.slide, className)}>
       <div className={classNames(styles.content)}>
-        <h2 className={classNames(styles.title)}>{title}</h2>
+        <Typography
+          variant="h3"
+          as="h2"
+        >
+          {title}
+        </Typography>
 
         {description && (
-          <p className={classNames(styles.description)}>{description}</p>
+          <Typography
+            variant="body"
+            as="p"
+            className="{color: var(--text-secondary)}"
+          >
+            {description}
+          </Typography>
         )}
 
         <button
@@ -35,7 +47,7 @@ export const PromoSlide: FC<PromoSlideProps> = ({
           className={classNames(styles.button)}
           onClick={onButtonClick}
         >
-          {buttonLabel}
+          <Typography variant="button">{buttonLabel}</Typography>
         </button>
       </div>
       <div className={classNames(styles.imageWrapper)}>
