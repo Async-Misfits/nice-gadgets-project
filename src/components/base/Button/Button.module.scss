@@ -53,6 +53,7 @@
   height: 40px;
   background: var(--btn-icon-bg);
   border-radius: 6px;
+  flex-shrink: 0;
 
   &:hover {
     background: var(--btn-icon-hover);
