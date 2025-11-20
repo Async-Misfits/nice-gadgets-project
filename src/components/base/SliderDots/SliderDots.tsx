@@ -3,9 +3,33 @@ import type { Swiper as SwiperType } from 'swiper';
 import styles from './SliderDots.module.scss';
 
 type Props = {
+  /**
+   * Swiper instance passed from the parent Slider component.
+   * If null, dots will not be displayed.
+   */
   swiper: SwiperType | null;
 };
 
+/**
+ * SliderDots component.
+ *
+ * A fully custom pagination control for the Slider component.
+ * Renders a horizontal list of dots and updates the active state
+ * when the Swiper instance changes slides.
+ *
+ * Features:
+ * - Subscribes to Swiper's `slideChange` event
+ * - Highlights the current slide dot
+ * - Allows clicking a dot to navigate to that slide (`slideToLoop`)
+ * - Compatible with loop mode
+ *
+ * @component
+ *
+ * @example
+ * ```tsx
+ * <SliderDots swiper={swiperInstance} />
+ * ```
+ */
 export const SliderDots: FC<Props> = ({ swiper }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 

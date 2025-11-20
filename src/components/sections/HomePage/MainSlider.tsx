@@ -44,7 +44,6 @@ export const MainSlider = () => {
               imageSrc="/gadgets/img/banner-accessories.png"
               imageAlt="iPhone 14 Pro in deep purple"
               onButtonClick={() => {
-                // later you can navigate to product page or open modal
                 console.log('Order now clicked');
               }}
             />
@@ -55,7 +54,6 @@ export const MainSlider = () => {
               imageSrc="/gadgets/img/banner-phones.png"
               imageAlt="iPhone 14 Pro in deep purple"
               onButtonClick={() => {
-                // later you can navigate to product page or open modal
                 console.log('Order now clicked');
               }}
             />
@@ -66,7 +64,6 @@ export const MainSlider = () => {
               imageSrc="/gadgets/img/banner-tablets.png"
               imageAlt="iPhone 14 Pro in deep purple"
               onButtonClick={() => {
-                // later you can navigate to product page or open modal
                 console.log('Order now clicked');
               }}
             />

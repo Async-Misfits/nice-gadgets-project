@@ -12,14 +12,79 @@ import styles from './Slider.module.scss';
 import 'swiper/css';
 
 export type SliderProps = {
+  /**
+   * Slide content. Each child becomes a <SwiperSlide>.
+   */
   children: ReactNode;
+
+  /**
+   * Number of slides visible at once.
+   * Supports "auto" to dynamically size slides.
+   *
+   * @default 1
+   */
   slidesPerView?: number | 'auto';
+
+  /**
+   * Space between slides, in pixels.
+   *
+   * @default 0
+   */
   spaceBetween?: number;
+
+  /**
+   * Enables infinite slide looping.
+   *
+   * @default false
+   */
   loop?: boolean;
+
+  /**
+   * Optional custom class for the slider wrapper.
+   */
   className?: string;
+
+  /**
+   * Callback that receives the initialized Swiper instance.
+   * Useful for connecting external controls (arrows, dots).
+   */
   onSwiperInit?: (instance: SwiperType) => void;
 };
 
+/**
+ * Slider component.
+ *
+ * A flexible Swiper wrapper with forwarded ref support.
+ * Provides an easy way to connect external navigation controls
+ * (arrows, dots) using `ref` or `onSwiperInit`.
+ *
+ * Features:
+ * - Controlled navigation through forwarded Swiper ref
+ * - Automatic height adjustment (`autoHeight`)
+ * - Supports loop mode
+ * - Supports dynamic slide content via React children
+ *
+ * @component
+ *
+ * @example
+ * ```tsx
+ * const sliderRef = useRef<SwiperType | null>(null);
+ *
+ * <Slider
+ *   ref={sliderRef}
+ *   slidesPerView={1}
+ *   spaceBetween={16}
+ *   loop
+ *   onSwiperInit={(instance) => console.log("Swiper initialized:", instance)}
+ * >
+ *   <PromoSlide ... />
+ *   <PromoSlide ... />
+ *   <PromoSlide ... />
+ * </Slider>
+ * ```
+ *
+ * @forwardRef SwiperType
+ */
 export const Slider = forwardRef<SwiperType, SliderProps>(
   (
     {
