@@ -1,0 +1,138 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border: 1px solid #323542;
+  background-color: #161827;
+  align-items: center;
+  padding: 32px;
+  box-sizing: border-box;
+
+  height: 442px; 
+  width: 212px;
+  flex-shrink: 0; 
+  
+  
+  &__top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 129px; 
+    margin-bottom: 6px;
+  }
+
+  &__image {
+    height: auto; 
+    max-height: 100%;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+  }
+  
+  &__title {
+    height: 58px;
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 6px;
+  }
+
+  &__prices {
+    display: flex;
+    width: 100%;
+    height: 31px;
+    margin-bottom: 6px;
+  }
+
+  &__priceRegular {
+    margin-right: 8px;
+  }
+
+  &__priceDiscount {
+    color:#75767F;
+    text-decoration: line-through;
+  }
+  
+  &__line {
+    width: 100%;
+    height: 1px;
+    background-color: #323542;
+    margin-bottom: 6px;
+  }
+
+  &__descriptions {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 0;
+    gap: 8px;
+    width: 100%;
+  }
+
+  &__descript {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    
+    &--title{
+      color: #75767F;
+    }
+  }
+
+  &__buttons {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+    
+    :global(.icon) {
+        width: 40px !important;
+        min-width: 40px !important;
+        flex-shrink: 0 !important;
+    }
+  }
+  
+  &--catalog {
+    height: 440px;
+    width: 100%;
+    min-width: 210px;
+    max-width: 300px;
+    flex-shrink: 1; 
+  }
+
+  @media (min-width: 640px) {
+    
+    &__top {
+        height: 202px;
+    }
+    
+    height: 512px;
+    width: 237px;
+    flex-shrink: 0;
+
+    &--catalog {
+      height: 512px;
+      width: 100%;
+      min-width: 220px; 
+      max-width: 290px;
+      flex-shrink: 1;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    
+    &__top {
+        height: 196px;
+    }
+    
+    height: 506px;
+    width: 272px;
+    flex-shrink: 0;
+
+    &--catalog {
+      height: 506px;
+      width: 272px;
+      min-width: 272px;
+      max-width: 272px;
+      flex-shrink: 0;
+    }
+  }
+}
