@@ -28,7 +28,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   buttonState?: ButtonState;
   children?: ReactNode;
-  icon?: ReactNode;
+  iconButton?: ReactNode;
   fillColor?: string;
 }
 
@@ -37,14 +37,16 @@ export const Button = ({
   buttonState = 'default',
   children,
   type = 'button',
-  icon,
+  iconButton,
   fillColor,
+  onClick,
   ...rest
 }: ButtonProps) => {
   return (
     <button
       type={type}
       disabled={buttonState === 'disabled'}
+      onClick={onClick}
       className={classNames(
         styles.button,
         styles[variant],
@@ -59,8 +61,8 @@ export const Button = ({
         />
       )}
 
-      {icon && variant !== 'circle' && (
-        <span className={styles.icon}>{icon}</span>
+      {iconButton && variant !== 'circle' && (
+        <span className={styles.iconWrapper}>{iconButton}</span>
       )}
 
       {variant !== 'circle' && children}

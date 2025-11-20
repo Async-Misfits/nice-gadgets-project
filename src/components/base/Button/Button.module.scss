@@ -1,3 +1,5 @@
+@use '@/styles/variables' as *;
+
 .button {
   display: inline-flex;
   align-items: center;
@@ -36,7 +38,10 @@
   height: 32px;
   background: var(--btn-arrow-bg);
   border-radius: 8px;
-  color: var(--color-white);
+
+  svg path {
+    fill: var(--color-white);
+  }
 
   &:hover {
     background: var(--btn-arrow-hover);
@@ -45,14 +50,18 @@
   &.disabled {
     border: 1px solid var(--btn-arrow-disabled);
     background-color: transparent;
+
+    svg path {
+      fill: var(--btn-arrow-disabled);
+    }
   }
 }
 
-.icon {
-  width: 40px;
-  height: 40px;
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: var(--btn-icon-bg);
-  border-radius: 6px;
 
   &:hover {
     background: var(--btn-icon-hover);
@@ -130,7 +139,7 @@
   background: none;
   border: none;
   padding: 0;
-  color: var(--text-primary);
+  color: $color-secondary;
   font-size: 12px;
   font-weight: 700;
   display: inline-flex;
@@ -139,6 +148,6 @@
   cursor: pointer;
 
   &:hover {
-    color: var(--btn-primary);
+    color: var(--color-white);
   }
 }
