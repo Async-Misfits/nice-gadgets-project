@@ -8,9 +8,9 @@ interface CustomIconProps extends IconProps {
   badgeCount?: number;
 }
 
-export const Icon: React.FC<CustomIconProps> = ({ 
-  name, 
-  size = 16, 
+export const Icon: React.FC<CustomIconProps> = ({
+  name,
+  size = 16,
   badgeCount,
   ...props
 }) => {
@@ -21,7 +21,13 @@ export const Icon: React.FC<CustomIconProps> = ({
     return null;
   }
 
-  const iconElement = <SvgComponent width={size} height={size} {...props} />;
+  const iconElement = (
+    <SvgComponent
+      width={size}
+      height={size}
+      {...props}
+    />
+  );
 
   if (badgeCount && badgeCount > 0) {
     return (

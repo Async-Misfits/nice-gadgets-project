@@ -1,0 +1,64 @@
+.section {
+  margin-block: 24px;
+}
+
+.sliderCell {
+  grid-column: 1 / -1; // всі 4 колонки
+}
+
+.arrowLeft,
+.arrowRight {
+  display: none; // на мобільному не показуємо
+}
+
+@media (min-width: 640px) {
+  .arrowLeft,
+  .arrowRight,
+  .sliderCell {
+    grid-row: 1; // всі в одному рядку
+  }
+
+  .arrowLeft,
+  .arrowRight {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    justify-content: center;
+    max-width: 32px;
+    border-radius: 100px;
+    background: var(--color-surface2);
+    color: var(--text-primary);
+    cursor: pointer;
+  }
+
+  .arrowLeft {
+    grid-column: 1 / span 1; // 1-а з 12
+  }
+
+  .sliderCell {
+    grid-column: 2 / span 10; // 2–11, центральні 10 колонок
+  }
+
+  .arrowRight {
+    grid-column: 12 / span 1; // 12-а
+  }
+  .arrowLeft,
+  .arrowRight {
+    height: 100%;
+  }
+}
+
+/* --- DESKTOP: 24 колонки --- */
+@media (min-width: 1200px) {
+  .arrowLeft {
+    grid-column: 1 / span 1; // тільки 1-а колонка
+  }
+
+  .sliderCell {
+    grid-column: 2 / span 22; // 2–23, всі центральні
+  }
+
+  .arrowRight {
+    grid-column: 24 / span 1; // остання 24-а колонка
+  }
+}
