@@ -14,9 +14,7 @@
   gap: 8px;
 }
 
-/* Кожен слайд – це плитка з фіксованою шириною,
-   Swiper з slidesPerView="auto" буде їх класти в ряд */
 .slide {
-  width: 272px; // під ProductCard (у тебе card теж 212px)
-  flex: 0 0 auto; // щоб не розтягувало на всю ширину
+  width: 272px;
+  flex: 0 0 auto;
 }

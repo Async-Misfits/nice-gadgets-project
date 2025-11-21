@@ -29,6 +29,8 @@ export const ProductsCarousel = ({
 }: ProductsCarouselProps) => {
   const swiperRef = useRef<SwiperType | null>(null);
   const [showArrows, setShowArrows] = useState(false);
+  const [isAtStart, setIsAtStart] = useState(true);
+  const [isAtEnd, setIsAtEnd] = useState(false);
 
   const handleNext = () => swiperRef.current?.slideNext();
   const handlePrev = () => swiperRef.current?.slidePrev();
@@ -36,23 +38,39 @@ export const ProductsCarousel = ({
   const handleSwiperInit = (instance: SwiperType) => {
     swiperRef.current = instance;
 
-    const updateArrowsVisibility = () => {
-      const container = instance.el as HTMLElement | null; // сам Swiper
-      const parent = container?.parentElement; // наша обгортка
+    const updateOverflow = () => {
+      const container = instance.el as HTMLElement | null;
+      const parent = container?.parentElement;
 
       if (!container || !parent) {
         setShowArrows(false);
         return;
       }
 
-      // Якщо контейнер ширший за видиму обгортку → є що скролити
       const canScroll = container.scrollWidth > parent.clientWidth + 1;
       setShowArrows(canScroll);
     };
 
-    updateArrowsVisibility();
-    instance.on('resize', updateArrowsVisibility);
-    instance.on('slidesLengthChange', updateArrowsVisibility);
+    const updateEdges = () => {
+      setIsAtStart(instance.isBeginning);
+      setIsAtEnd(instance.isEnd);
+    };
+
+    updateOverflow();
+    updateEdges();
+
+    instance.on('resize', () => {
+      updateOverflow();
+      updateEdges();
+    });
+
+    instance.on('slidesLengthChange', () => {
+      updateOverflow();
+      updateEdges();
+    });
+
+    // позицію оновлюємо при зміні слайду
+    instance.on('slideChange', updateEdges);
   };
 
   return (
@@ -70,6 +88,7 @@ export const ProductsCarousel = ({
             <Button
               onClick={handlePrev}
               variant="squareArrow"
+              buttonState={isAtStart ? 'disabled' : 'default'}
             >
               <Icon name="chevron-left" />
             </Button>
@@ -77,6 +96,7 @@ export const ProductsCarousel = ({
             <Button
               onClick={handleNext}
               variant="squareArrow"
+              buttonState={isAtEnd ? 'disabled' : 'default'}
             >
               <Icon name="chevron-right" />
             </Button>
