@@ -18,7 +18,7 @@ export type ButtonVariant =
   | 'squareArrow'
   | 'primary'
   | 'secondary'
-  | 'icon'
+  | 'iconWrapper'
   | 'circle'
   | 'inline';
 

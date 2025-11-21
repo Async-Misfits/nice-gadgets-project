@@ -43,7 +43,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
       <div className='card__top'>
         <img
           src='../../../../public/gadgets/img/phones/apple-iphone-12/purple/00.webp'
-          alt='Apple iPhone Xs 64GB Silver (iMT9G2FS/A)'
+          alt={title}
           className='card__image'
         />
       </div>
@@ -71,7 +71,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
       </div>
       <div className='card__buttons'>  
         <Button>Add to cart</Button>
-        <Button variant = 'icon'><Icon name='heart'/></Button>
+        <Button variant = 'iconWrapper' ><Icon name='heart'/></Button>
       </div>
     </article>
   )
