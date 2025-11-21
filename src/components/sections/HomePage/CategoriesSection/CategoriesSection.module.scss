@@ -1,0 +1,57 @@
+@use '@/styles/mixins' as *;
+
+.section {
+  width: 100%;
+}
+
+.grid {
+  gap: 8px;
+
+  @include tablet {
+    gap: 16px;
+  }
+
+  @include desktop {
+    gap: 16px;
+  }
+}
+
+.headerItem {
+  grid-column: span 4;
+
+  @include tablet {
+    grid-column: span 12;
+  }
+
+  @include desktop {
+    grid-column: span 24;
+  }
+
+  margin-bottom: 12px;
+}
+
+.item {
+  display: block;
+  text-decoration: none;
+
+  /* mobile */
+  grid-column: span 4;
+
+  @include tablet {
+    grid-column: span 4; // 12/3
+  }
+
+  @include desktop {
+    grid-column: span 8; // 24/3
+  }
+
+  /* hover effect */
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    opacity: 0.95;
+  }
+}

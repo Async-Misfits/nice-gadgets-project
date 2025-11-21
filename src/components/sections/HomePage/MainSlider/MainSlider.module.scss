@@ -3,19 +3,19 @@
 }
 
 .sliderCell {
-  grid-column: 1 / -1; // всі 4 колонки
+  grid-column: 1 / -1;
 }
 
 .arrowLeft,
 .arrowRight {
-  display: none; // на мобільному не показуємо
+  display: none;
 }
 
 @media (min-width: 640px) {
   .arrowLeft,
   .arrowRight,
   .sliderCell {
-    grid-row: 1; // всі в одному рядку
+    grid-row: 1;
   }
 
   .arrowLeft,
@@ -32,15 +32,15 @@
   }
 
   .arrowLeft {
-    grid-column: 1 / span 1; // 1-а з 12
+    grid-column: 1 / span 1; // 1
   }
 
   .sliderCell {
-    grid-column: 2 / span 10; // 2–11, центральні 10 колонок
+    grid-column: 2 / span 10; // 2–11
   }
 
   .arrowRight {
-    grid-column: 12 / span 1; // 12-а
+    grid-column: 12 / span 1; // 12
   }
   .arrowLeft,
   .arrowRight {
@@ -48,17 +48,16 @@
   }
 }
 
-/* --- DESKTOP: 24 колонки --- */
 @media (min-width: 1200px) {
   .arrowLeft {
-    grid-column: 1 / span 1; // тільки 1-а колонка
+    grid-column: 1 / span 1; // 1
   }
 
   .sliderCell {
-    grid-column: 2 / span 22; // 2–23, всі центральні
+    grid-column: 2 / span 22; // 2–23
   }
 
   .arrowRight {
-    grid-column: 24 / span 1; // остання 24-а колонка
+    grid-column: 24 / span 1; // 24
   }
 }

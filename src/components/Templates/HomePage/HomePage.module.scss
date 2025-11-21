@@ -1,0 +1,45 @@
+@use '@/styles/mixins' as *;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* ---------- SPACING RULES ---------- */
+
+.heroTopSpacing {
+  margin-top: 24px;
+
+  @include tablet {
+    margin-top: 32px;
+  }
+
+  @include desktop {
+    margin-top: 56px;
+  }
+}
+
+.sectionSpacing {
+  margin-top: 56px;
+
+  @include tablet {
+    margin-top: 64px;
+  }
+
+  @include desktop {
+    margin-top: 80px;
+  }
+}
+
+.heroTitleWrapper {
+  grid-column: span 4;
+
+  @include tablet {
+    grid-column: span 12;
+  }
+
+  @include desktop {
+    grid-column: span 24;
+  }
+}
