@@ -10,16 +10,11 @@ import ProductCard from '../../base/ProductCard/ProductCard';
 import styles from './ProductsCarousel.module.scss';
 import { Button } from '../../base/Button';
 import { Icon } from '../../base/icons';
+import { Grid } from '../../layout/Grid';
 
 type ProductsCarouselProps = {
-  /**
-   * Назва секції ("Brand new models")
-   */
   title: string;
 
-  /**
-   * Масив товарів, які треба показати
-   */
   products: string[];
 };
 
@@ -69,63 +64,66 @@ export const ProductsCarousel = ({
       updateEdges();
     });
 
-    // позицію оновлюємо при зміні слайду
     instance.on('slideChange', updateEdges);
   };
 
   return (
-    <section className={styles.section}>
-      <div className={styles.header}>
-        <Typography
-          variant="h2"
-          as="h2"
-        >
-          {title}
-        </Typography>
+    <Grid className={styles.grid}>
+      <div className={styles.headerItem}>
+        <div className={styles.header}>
+          <Typography
+            variant="h2"
+            as="h2"
+          >
+            {title}
+          </Typography>
 
-        {showArrows && (
-          <div className={styles.controls}>
-            <Button
-              onClick={handlePrev}
-              variant="squareArrow"
-              buttonState={isAtStart ? 'disabled' : 'default'}
-            >
-              <Icon name="chevron-left" />
-            </Button>
+          {showArrows && (
+            <div className={styles.controls}>
+              <Button
+                onClick={handlePrev}
+                variant="squareArrow"
+                buttonState={isAtStart ? 'disabled' : 'default'}
+              >
+                <Icon name="chevron-left" />
+              </Button>
 
-            <Button
-              onClick={handleNext}
-              variant="squareArrow"
-              buttonState={isAtEnd ? 'disabled' : 'default'}
-            >
-              <Icon name="chevron-right" />
-            </Button>
-          </div>
-        )}
+              <Button
+                onClick={handleNext}
+                variant="squareArrow"
+                buttonState={isAtEnd ? 'disabled' : 'default'}
+              >
+                <Icon name="chevron-right" />
+              </Button>
+            </div>
+          )}
+        </div>
       </div>
 
-      <Swiper
-        onSwiper={handleSwiperInit}
-        slidesPerView="auto"
-        spaceBetween={24}
-      >
-        {products.map((product) => (
-          <SwiperSlide
-            key={product}
-            className={styles.slide}
-          >
-            <ProductCard
-              title={product}
-              priceRegular={200}
-              priceDiscount={200}
-              screen="TEST"
-              capacity="200"
-              ram="200"
-              isCatalog
-            />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </section>
+      <div className={styles.sliderItem}>
+        <Swiper
+          onSwiper={handleSwiperInit}
+          slidesPerView="auto"
+          spaceBetween={24}
+        >
+          {products.map((product) => (
+            <SwiperSlide
+              key={product}
+              className={styles.slide}
+            >
+              <ProductCard
+                title={product}
+                priceRegular={200}
+                priceDiscount={200}
+                screen="TEST"
+                capacity="200"
+                ram="200"
+                isCatalog
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+    </Grid>
   );
 };

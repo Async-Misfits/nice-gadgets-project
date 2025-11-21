@@ -1,7 +1,10 @@
 @use '@/styles/mixins' as *;
 
-.grid {
+.section {
   width: 100%;
+}
+
+.grid {
   gap: 8px;
 
   @include tablet {
@@ -23,33 +26,32 @@
   @include desktop {
     grid-column: span 24;
   }
+
+  margin-bottom: 12px;
 }
 
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 24px;
-}
+.item {
+  display: block;
+  text-decoration: none;
 
-.controls {
-  display: flex;
-  gap: 8px;
-}
-
-.sliderItem {
+  /* mobile */
   grid-column: span 4;
 
   @include tablet {
-    grid-column: span 12;
+    grid-column: span 4; // 12/3
   }
 
   @include desktop {
-    grid-column: span 24;
+    grid-column: span 8; // 24/3
   }
-}
 
-.slide {
-  width: 272px;
-  flex: 0 0 auto;
+  /* hover effect */
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    opacity: 0.95;
+  }
 }
