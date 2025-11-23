@@ -1,7 +1,7 @@
-import { createBrowserRouter } from 'react-router';
+import { createHashRouter } from 'react-router';
 import App from '../app/App';
 
-const routes = [
+export const router = createHashRouter([
   {
     path: '/',
     element: <App />,
@@ -15,8 +15,4 @@ const routes = [
       { path: '*', element: <div>not found</div> },
     ],
   },
-];
-
-export const router = createBrowserRouter(routes, {
-  basename: import.meta.env.PROD ? '/nice-gadgets-project' : '/',
-});
+]);
