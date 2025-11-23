@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router';
 import App from '../app/App';
 
-export const router = createBrowserRouter([
+const routes = [
   {
     path: '/',
     element: <App />,
@@ -15,4 +15,8 @@ export const router = createBrowserRouter([
       { path: '*', element: <div>not found</div> },
     ],
   },
-]);
+];
+
+export const router = createBrowserRouter(routes, {
+  basename: import.meta.env.PROD ? '/nice-gadgets-project' : '/',
+});
