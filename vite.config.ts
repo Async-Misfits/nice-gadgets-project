@@ -11,7 +11,7 @@ export default defineConfig(({ mode }) => ({
       '@': path.resolve(__dirname, './src'),
     },
   },
-  base: mode === 'production' ? '/phone-catalog/' : '/',
+  base: mode === 'production' ? '/nice-gadgets-project/' : '/',
   server: {
     open: true,
   },
