@@ -1,0 +1,59 @@
+.breadcrumbs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.backLink {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  text-decoration: none;
+
+  &:hover {
+    color: var(--text-primary);
+  }
+}
+
+.chain {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+}
+
+.separator {
+  width: 16px;
+  height: 16px;
+  color: var(--gray);
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  svg {
+    display: block;
+  }
+}
+
+.link {
+  color: var(--gray);
+
+  &:hover {
+    color: var(--white);
+  }
+}
+
+.current {
+  color: var(--text-secondary);
+}
