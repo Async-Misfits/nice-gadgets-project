@@ -6,6 +6,7 @@ import { Grid } from '../../../layout/Grid';
 import styles from './MainSlider.module.scss';
 import { Icon } from '../../../base/icons';
 import { SliderDots } from '../../../base/SliderDots/SliderDots';
+const BASE = import.meta.env.BASE_URL;
 
 export const MainSlider = () => {
   const swiperRef = useRef<SwiperType | null>(null);
@@ -40,7 +41,7 @@ export const MainSlider = () => {
             title="Now available in our store! 👌"
             description="Be the first!"
             buttonLabel="Order now"
-            imageSrc="/images/banner-accessories.png"
+            imageSrc={`${BASE}images/banner-accessories.png`}
             imageAlt="iPhone 14 Pro in deep purple"
             onButtonClick={() => {
               console.log('Order now clicked');
@@ -50,7 +51,7 @@ export const MainSlider = () => {
             title="Now available in our store! 👌"
             description="Be the first!"
             buttonLabel="Order now"
-            imageSrc="/images/banner-phones.png"
+            imageSrc={`${BASE}images/banner-phones.png`}
             imageAlt="iPhone 14 Pro in deep purple"
             onButtonClick={() => {
               console.log('Order now clicked');
@@ -60,7 +61,7 @@ export const MainSlider = () => {
             title="Now available in our store! 👌"
             description="Be the first!"
             buttonLabel="Order now"
-            imageSrc="/images/banner-tablets.png"
+            imageSrc={`${BASE}images/banner-tablets.png`}
             imageAlt="iPhone 14 Pro in deep purple"
             onButtonClick={() => {
               console.log('Order now clicked');
