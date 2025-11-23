@@ -1,0 +1,50 @@
+@use '@/styles/mixins' as *; 
+@use '@/styles/variables' as *;
+
+$gap-vertical: 16px;
+$padding-checkout: 16px;
+$border-radius-checkout: 8px;
+
+.products-in-cart__wrapper {
+  grid-column: 1 / -1; 
+  
+  display: flex;
+  flex-direction: column;
+  gap: $gap-vertical; 
+  
+  @include desktop {
+    grid-column: span 16; 
+  }
+}
+
+.products-in-cart__checkout {
+  grid-column: 1 / -1; 
+
+  @include desktop {
+    grid-column: span 8; 
+  }
+}
+
+.products-in-cart__checkout-content {
+    padding: $padding-checkout;
+    border: 1px solid $color-elements; 
+    border-radius: $border-radius-checkout;
+    text-align: center;
+}
+
+.products-in-cart__total-info {
+  color: $text-secondary; 
+}
+
+.products-in-cart__total {
+    display: flex;
+    flex-direction: column;
+    gap: 4px; 
+    margin-bottom: $gap-vertical; 
+}
+
+.products-in-cart__line {
+    height: 1px;
+    background-color: $color-elements; 
+    margin-bottom: $gap-vertical; 
+}

@@ -1,0 +1,55 @@
+@use '@/styles/mixins' as *;
+
+.grid {
+  width: 100%;
+  gap: 8px;
+
+  @include tablet {
+    gap: 16px;
+  }
+
+  @include desktop {
+    gap: 16px;
+  }
+}
+
+.headerItem {
+  grid-column: span 4;
+
+  @include tablet {
+    grid-column: span 12;
+  }
+
+  @include desktop {
+    grid-column: span 24;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+}
+
+.sliderItem {
+  grid-column: span 4;
+
+  @include tablet {
+    grid-column: span 12;
+  }
+
+  @include desktop {
+    grid-column: span 24;
+  }
+}
+
+.slide {
+  width: 272px;
+  flex: 0 0 auto;
+}

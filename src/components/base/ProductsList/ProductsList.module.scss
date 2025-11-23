@@ -1,0 +1,21 @@
+@use '@/styles/mixins' as *;
+
+.cardItem {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  grid-column: span 4;
+
+  @include tablet {
+    grid-column: span 6;
+
+    @media (min-width: 900px) {
+      grid-column: span 4;
+    }
+  }
+
+  @include desktop {
+    grid-column: span 6;
+  }
+}
