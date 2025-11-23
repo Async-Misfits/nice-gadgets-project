@@ -40,7 +40,7 @@ export const MainSlider = () => {
             title="Now available in our store! 👌"
             description="Be the first!"
             buttonLabel="Order now"
-            imageSrc="/gadgets/img/banner-accessories.png"
+            imageSrc="/images/banner-accessories.png"
             imageAlt="iPhone 14 Pro in deep purple"
             onButtonClick={() => {
               console.log('Order now clicked');
@@ -50,7 +50,7 @@ export const MainSlider = () => {
             title="Now available in our store! 👌"
             description="Be the first!"
             buttonLabel="Order now"
-            imageSrc="/gadgets/img/banner-phones.png"
+            imageSrc="/images/banner-phones.png"
             imageAlt="iPhone 14 Pro in deep purple"
             onButtonClick={() => {
               console.log('Order now clicked');
@@ -60,7 +60,7 @@ export const MainSlider = () => {
             title="Now available in our store! 👌"
             description="Be the first!"
             buttonLabel="Order now"
-            imageSrc="/gadgets/img/banner-tablets.png"
+            imageSrc="/images/banner-tablets.png"
             imageAlt="iPhone 14 Pro in deep purple"
             onButtonClick={() => {
               console.log('Order now clicked');

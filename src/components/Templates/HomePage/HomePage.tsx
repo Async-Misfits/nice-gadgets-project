@@ -5,10 +5,11 @@ import { ProductsCarousel } from '../../ui/ProductsCarousel/ProductsCarousel';
 import { CategoriesSection } from '../../sections/HomePage/CategoriesSection/CategoriesSection';
 import { Typography } from '../../base/Typography';
 import { Grid } from '../../layout/Grid';
+import type { Product } from '../../../types/Product';
 
 type HomePageProps = {
-  brandNewProducts: string[];
-  hotPriceProducts: string[];
+  brandNewProducts: Product[];
+  hotPriceProducts: Product[];
   categories: Array<{
     imageSrc: string;
     title: string;

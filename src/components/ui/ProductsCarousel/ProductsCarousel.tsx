@@ -11,11 +11,12 @@ import styles from './ProductsCarousel.module.scss';
 import { Button } from '../../base/Button';
 import { Icon } from '../../base/icons';
 import { Grid } from '../../layout/Grid';
+import type { Product } from '../../../types/Product';
 
 type ProductsCarouselProps = {
   title: string;
 
-  products: string[];
+  products: Product[];
 };
 
 export const ProductsCarousel = ({
@@ -108,16 +109,16 @@ export const ProductsCarousel = ({
         >
           {products.map((product) => (
             <SwiperSlide
-              key={product}
+              key={product.id}
               className={styles.slide}
             >
               <ProductCard
-                title={product}
-                priceRegular={200}
-                priceDiscount={200}
-                screen="TEST"
-                capacity="200"
-                ram="200"
+                title={product.name}
+                priceRegular={product.price}
+                priceDiscount={product.fullPrice}
+                screen={product.screen}
+                capacity={product.capacity}
+                ram={product.ram}
                 isCatalog
               />
             </SwiperSlide>
