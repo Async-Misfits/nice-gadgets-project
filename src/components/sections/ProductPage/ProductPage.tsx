@@ -6,6 +6,7 @@ import { Button } from '../../base/Button';
 import { Divider } from '../../base/Divider/Divider';
 import { Icon } from '../../base/icons';
 import type { ProductDetails } from '../../../types/ProductDetails';
+import { Gallery } from '../../base/Gallery/Gallery';
 
 type ProductPageProps = {
   product: ProductDetails;
@@ -39,10 +40,9 @@ export const ProductPage = ({ product }: ProductPageProps) => {
           {product.name}
         </Typography>
         <div className={styles.gallery}>
-          <img
-            src={`/${product.images?.[0]}`}
-            alt={product.name}
-          />
+          <div className={styles.gallery}>
+          <Gallery images={product.images}/>
+        </div>
         </div>
 
         <div className={styles.controls}>

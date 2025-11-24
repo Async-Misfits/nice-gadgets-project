@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-
 import 'swiper/css';
-
 import './Gallery.scss';
+
+const BASE = import.meta.env.BASE_URL;
 
 export interface GalleryProps {
   images: string[];
@@ -11,6 +11,8 @@ export interface GalleryProps {
 
 export const Gallery: React.FC<GalleryProps> = ({ images }) => {
   const [activeIndex, setActiveIndex] = useState(0);
+
+  const updatedImages = images.map(image => `${BASE}gadgets/${image}`);
 
   if (!images || images.length === 0) {
     return null;
@@ -27,7 +29,7 @@ export const Gallery: React.FC<GalleryProps> = ({ images }) => {
       <div className="gallery-main">
         <div className="gallery-main-inner">
           <img
-            src={images[activeIndex]}
+            src={updatedImages[activeIndex]}
             alt={`Image ${activeIndex + 1}`}
             className="gallery-main-img"
           />
@@ -51,7 +53,7 @@ export const Gallery: React.FC<GalleryProps> = ({ images }) => {
             },
           }}
         >
-          {images.map((src, index) => (
+          {updatedImages.map((src, index) => (
             <SwiperSlide key={src + index}>
               <button
                 type="button"
