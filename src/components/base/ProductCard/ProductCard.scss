@@ -12,6 +12,9 @@
   width: 212px;
   flex-shrink: 0; 
   
+  &__link {
+    text-decoration: none;
+  }
   
   &__top {
     display: flex;
