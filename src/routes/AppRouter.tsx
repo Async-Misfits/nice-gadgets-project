@@ -3,6 +3,7 @@ import App from '../app/App';
 import { HomePage } from '../pages/HomePage/HomePage';
 import { FavoritesPage } from '../pages/FavoritesPage/FavoritesPage';
 import { ItemPage } from '../pages/ItemPage';
+import CatalogPage from '../components/base/CatalogPage/CatalogPage';
 
 export const router = createHashRouter([
   {
@@ -10,11 +11,35 @@ export const router = createHashRouter([
     element: <App />,
     children: [
       { index: true, element: <HomePage /> },
-      { path: 'phones', element: <div>phones</div> },
+      {
+        path: 'phones',
+        element: (
+          <CatalogPage
+            key="phones"
+            category="phones"
+          />
+        ),
+      },
       { path: 'phones/:itemId', element: <ItemPage /> },
-      { path: 'tablets', element: <div>tablets</div> },
+      {
+        path: 'tablets',
+        element: (
+          <CatalogPage
+            key="tablets"
+            category="tablets"
+          />
+        ),
+      },
       { path: 'tablets/:itemId', element: <ItemPage /> },
-      { path: 'accessories', element: <div>accessories</div> },
+      {
+        path: 'accessories',
+        element: (
+          <CatalogPage
+            key="accessories"
+            category="accessories"
+          />
+        ),
+      },
       { path: 'accessories/:itemId', element: <ItemPage /> },
       { path: 'cart', element: <div>cart</div> },
       { path: 'favorites', element: <FavoritesPage /> },
