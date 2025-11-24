@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper';
 
@@ -12,6 +12,10 @@ import { Button } from '../../base/Button';
 import { Icon } from '../../base/icons';
 import { Grid } from '../../layout/Grid';
 import type { Product } from '../../../types/Product';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
+import { selectCartItems, selectFavoriteIds } from '../../../store/selectors';
+import { addToCart } from '../../../store/cartSlice';
+import { toggleFavorite } from '../../../store/favoritesSlice';
 
 type ProductsCarouselProps = {
   title: string;
@@ -23,6 +27,7 @@ export const ProductsCarousel = ({
   title,
   products,
 }: ProductsCarouselProps) => {
+  const dispatch = useAppDispatch();
   const swiperRef = useRef<SwiperType | null>(null);
   const [showArrows, setShowArrows] = useState(false);
   const [isAtStart, setIsAtStart] = useState(true);
@@ -67,6 +72,38 @@ export const ProductsCarousel = ({
 
     instance.on('slideChange', updateEdges);
   };
+
+  const cartItems = useAppSelector(selectCartItems);
+  const favoriteIds = useAppSelector(selectFavoriteIds);
+
+  const isAdded = useCallback(
+    (productId: string) => cartItems.some((item) => item.itemId === productId),
+    [cartItems],
+  );
+
+  const isFavorite = useCallback(
+    (productId: string) => favoriteIds.includes(productId),
+    [favoriteIds],
+  );
+
+  const handleAddToCart = useCallback(
+    (productId: string) => {
+      // якщо у вас action називається інакше — заміни тут
+      dispatch(addToCart(productId));
+      // або dispatch(cartActions.addItem(product));
+    },
+    [dispatch],
+  );
+
+  // тогл фаворита
+  const handleToggleFavorite = useCallback(
+    (productId: string) => {
+      // якщо у вас action називається інакше — заміни тут
+      dispatch(toggleFavorite(productId));
+      // або dispatch(favoritesActions.toggle(productId));
+    },
+    [dispatch],
+  );
 
   return (
     <Grid className={styles.grid}>
@@ -113,13 +150,12 @@ export const ProductsCarousel = ({
               className={styles.slide}
             >
               <ProductCard
-                title={product.name}
-                priceRegular={product.price}
-                priceDiscount={product.fullPrice}
-                screen={product.screen}
-                capacity={product.capacity}
-                ram={product.ram}
+                product={product}
                 isCatalog
+                toggleFavorite={handleToggleFavorite}
+                addToCart={handleAddToCart}
+                isAdded={isAdded(product.itemId)}
+                isFavorite={isFavorite(product.itemId)}
               />
             </SwiperSlide>
           ))}

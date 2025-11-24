@@ -36,7 +36,7 @@ export const FavoritesTemplate: React.FC<Props> = ({
               as="h1"
               variant="h1"
             >
-              Favourites
+              Favorites
             </Typography>
           </div>
 
