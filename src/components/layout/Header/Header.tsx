@@ -7,6 +7,7 @@ import { Icon } from '../../base/icons/Icon';
 import styles from './Header.module.scss';
 import Logo from '../../../../public/icons/Logo.svg?react';
 import { MobileMenu } from '../MobileMenu/MobileMenu';
+import { useAppSelector } from '../../../store/hooks';
 
 const navItems = [
   { label: 'Home', href: '/' },
@@ -17,6 +18,11 @@ const navItems = [
 
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const cartCount = useAppSelector((state) => state.cart.items.length);
+  const favoritesCount = useAppSelector(
+    (state) => state.favorites.itemIds.length,
+  );
+
   return (
     <>
       <header className={styles.header}>
@@ -93,6 +99,7 @@ export const Header: React.FC = () => {
                 >
                   <Icon
                     name="heart"
+                    badgeCount={favoritesCount}
                     size={16}
                   />
                 </button>
@@ -108,7 +115,7 @@ export const Header: React.FC = () => {
                   <Icon
                     name="mail"
                     size={16}
-                    badgeCount={2}
+                    badgeCount={cartCount}
                   />
                 </button>
               </Link>
