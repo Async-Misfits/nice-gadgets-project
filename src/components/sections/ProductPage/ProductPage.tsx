@@ -7,6 +7,9 @@ import { Divider } from '../../base/Divider/Divider';
 import { Icon } from '../../base/icons';
 import type { ProductDetails } from '../../../types/ProductDetails';
 import { Gallery } from '../../base/Gallery/Gallery';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
+import { addToCart, removeFromCart } from '../../../store/cartSlice';
+import { toggleFavorite } from '../../../store/favoritesSlice';
 
 type ProductPageProps = {
   product: ProductDetails;
@@ -16,6 +19,28 @@ export const ProductPage = ({ product }: ProductPageProps) => {
   const [activeCapacity, setActiveCapacity] = useState(
     product.capacityAvailable?.[0] ?? '',
   );
+
+  const dispatch = useAppDispatch();
+
+  const isInCart = useAppSelector((state) =>
+    state.cart.items.some((i) => i.itemId === product.id),
+  );
+
+  const isFavorite = useAppSelector((state) =>
+    state.favorites.itemIds.includes(product.id),
+  );
+
+  const handleCartClick = () => {
+    if (isInCart) {
+      dispatch(removeFromCart(product.id));
+    } else {
+      dispatch(addToCart(product.id));
+    }
+  };
+
+  const handleFavoriteClick = () => {
+    dispatch(toggleFavorite(product.id));
+  };
 
   const specs = [
     { key: 'screen', label: 'Screen' },
@@ -41,8 +66,8 @@ export const ProductPage = ({ product }: ProductPageProps) => {
         </Typography>
         <div className={styles.gallery}>
           <div className={styles.gallery}>
-          <Gallery images={product.images}/>
-        </div>
+            <Gallery images={product.images} />
+          </div>
         </div>
 
         <div className={styles.controls}>
@@ -112,10 +137,20 @@ export const ProductPage = ({ product }: ProductPageProps) => {
           </div>
 
           <div className={styles.buttonWrapper}>
-            <Button variant="primary">Add to cart</Button>
+            <Button
+              variant="primary"
+              onClick={handleCartClick}
+            >
+              {isInCart ? 'Added to cart' : 'Add to cart'}
+            </Button>
             <Button
               variant="iconWrapper"
-              iconButton={<Icon name="heart" />}
+              iconButton={
+                <Icon
+                  name={isFavorite ? 'heart-filled' : 'heart'}
+                  onClick={handleFavoriteClick}
+                />
+              }
             />
           </div>
 
