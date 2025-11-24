@@ -1,0 +1,71 @@
+@use '@/styles/mixins' as *;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* ---------- SPACING RULES (same as HomePage) ---------- */
+
+.heroTopSpacing {
+  margin-top: 24px;
+
+  @include tablet {
+    margin-top: 32px;
+  }
+
+  @include desktop {
+    margin-top: 56px;
+  }
+}
+
+.sectionSpacing {
+  margin-top: 32px;
+
+  @include tablet {
+    margin-top: 40px;
+  }
+}
+
+/* ---------- GRID WRAPPERS ---------- */
+
+.fullLineWrapper {
+  grid-column: span 4;
+
+  @include tablet {
+    grid-column: span 12;
+  }
+
+  @include desktop {
+    grid-column: span 24;
+  }
+}
+
+.countWrapper {
+  margin-top: 8px;
+
+  grid-column: span 4;
+
+  @include tablet {
+    grid-column: span 12;
+  }
+
+  @include desktop {
+    grid-column: span 24;
+  }
+}
+
+/* ---------- LIST SECTION ---------- */
+
+.listWrapper {
+  grid-column: span 4;
+
+  @include tablet {
+    grid-column: span 12;
+  }
+
+  @include desktop {
+    grid-column: span 24;
+  }
+}
