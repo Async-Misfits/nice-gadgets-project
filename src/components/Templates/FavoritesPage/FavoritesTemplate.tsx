@@ -59,7 +59,7 @@ export const FavoritesTemplate: React.FC<Props> = ({
                 variant="body"
                 className={styles.emptyText}
               >
-                Улюблених товарів поки немає
+                No favorites yet
               </Typography>
             : <ProductsList products={products} />}
           </div>

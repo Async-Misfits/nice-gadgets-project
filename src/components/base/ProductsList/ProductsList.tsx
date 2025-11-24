@@ -27,22 +27,16 @@ export const ProductsList: React.FC<ProductsListProps> = ({ products }) => {
     [favoriteIds],
   );
 
-  // додати в кошик
   const handleAddToCart = useCallback(
     (productId: string) => {
-      // якщо у вас action називається інакше — заміни тут
       dispatch(addToCart(productId));
-      // або dispatch(cartActions.addItem(product));
     },
     [dispatch],
   );
 
-  // тогл фаворита
   const handleToggleFavorite = useCallback(
     (productId: string) => {
-      // якщо у вас action називається інакше — заміни тут
       dispatch(toggleFavorite(productId));
-      // або dispatch(favoritesActions.toggle(productId));
     },
     [dispatch],
   );
@@ -56,7 +50,7 @@ export const ProductsList: React.FC<ProductsListProps> = ({ products }) => {
         >
           <ProductCard
             product={product}
-            isCatalog={true}
+            isCatalog
             toggleFavorite={handleToggleFavorite}
             addToCart={handleAddToCart}
             isAdded={isAdded(product.itemId)}

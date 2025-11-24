@@ -14,10 +14,6 @@
   @include tablet {
     margin-top: 32px;
   }
-
-  @include desktop {
-    margin-top: 56px;
-  }
 }
 
 .sectionSpacing {
@@ -43,8 +39,6 @@
 }
 
 .countWrapper {
-  margin-top: 8px;
-
   grid-column: span 4;
 
   @include tablet {
