@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import { Typography } from '../Typography';
 import './ProductCard.scss';
 import type { Product } from '../../../types/Product';
+import { Link } from 'react-router';
 
 interface ProductCardProps {
   product: Product;
@@ -30,17 +31,23 @@ const ProductCard: React.FC<ProductCardProps> = ({
   isFavorite = false,
 }) => {
 
+  const productLink = `/${product.category}/${product.itemId}`;
+
   return (
     <article className={classNames('card', { 'card--catalog': isCatalog })}>
       <div className='card__top'>
-        <img
-          src={product.image}
-          alt={product.name}
-          className='card__image'
-        />
+        <Link to={productLink} className='card__link'>
+          <img
+            src={product.image}
+            alt={product.name}
+            className='card__image'
+          />
+        </Link>
       </div>
       <div className='card__title'>
-        <Typography variant='body'>{product.name}</Typography>       
+        <Link to={productLink} className='card__link'>
+          <Typography variant='body'>{product.name}</Typography>     
+        </Link>     
       </div>
       <div className='card__prices'>
         <div className='card__priceRegular'><Typography as='h3' variant='h3'>${product.price}</Typography></div>
