@@ -5,6 +5,13 @@ import styles from './Footer.module.scss';
 import { Icon } from '../../base/icons';
 
 export const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <footer className={styles.footer}>
       <Grid>
@@ -57,7 +64,12 @@ export const Footer = () => {
             </ul>
 
             <div className={styles.backToTop}>
-              <Button variant="inline">Back to top</Button>
+              <Button
+                variant="inline"
+                onClick={scrollToTop}
+              >
+                Back to top
+              </Button>
 
               <Button
                 variant="square"
@@ -67,7 +79,7 @@ export const Footer = () => {
                     size={36}
                   />
                 }
-                onClick={() => {}}
+                onClick={scrollToTop}
               />
             </div>
           </div>
