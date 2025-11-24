@@ -1,0 +1,14 @@
+@use '@/styles/mixins' as *;
+
+.fullLineWrapper {
+  margin-top: 24px;
+  grid-column: span 4;
+
+  @include tablet {
+    grid-column: span 12;
+  }
+
+  @include desktop {
+    grid-column: span 24;
+  }
+}
