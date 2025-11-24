@@ -30,6 +30,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   isAdded = false,
   isFavorite = false,
 }) => {
+
   const productLink = `/${product.category}/${product.itemId}`;
   return (
     <article className={classNames('card', { 'card--catalog': isCatalog })}>
