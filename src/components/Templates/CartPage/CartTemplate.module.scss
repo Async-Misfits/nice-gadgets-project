@@ -1,0 +1,56 @@
+@use '@/styles/mixins' as *;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* ---------- SPACING RULES ---------- */
+
+.heroTopSpacing {
+  margin-top: 24px;
+}
+
+.sectionSpacing {
+  margin-top: 32px;
+}
+
+/* ---------- GRID WRAPPERS ---------- */
+
+.lineWrapper {
+  grid-column: span 4;
+
+  @include tablet {
+    grid-column: span 12;
+  }
+
+  @include desktop {
+    grid-column: span 24;
+  }
+}
+
+.listWrapper {
+  grid-column: span 4;
+
+  @include tablet {
+    grid-column: span 12;
+  }
+
+  @include desktop {
+    grid-column: span 24;
+  }
+}
+
+.emptyText {
+  color: var(--text-secondary);
+  margin-top: 16px;
+
+  @include tablet {
+    margin-top: 24px;
+  }
+
+  @include desktop {
+    margin-top: 32px;
+  }
+}
