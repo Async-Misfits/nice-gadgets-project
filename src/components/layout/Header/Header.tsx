@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { Typography } from '../../base/Typography';
 // import { Button } from '../../../base/Button';
 import { Icon } from '../../base/icons/Icon';
@@ -86,28 +86,32 @@ export const Header: React.FC = () => {
           {/* Desktop Actions */}
           <div className={styles.desktopActions}>
             <div className={styles.actionButton}>
-              <button
-                type="button"
-                className={styles.iconButton}
-              >
-                <Icon
-                  name="heart"
-                  size={16}
-                />
-              </button>
+              <Link to="/favorites">
+                <button
+                  type="button"
+                  className={styles.iconButton}
+                >
+                  <Icon
+                    name="heart"
+                    size={16}
+                  />
+                </button>
+              </Link>
             </div>
 
             <div className={styles.actionButton}>
-              <button
-                type="button"
-                className={styles.iconButton}
-              >
-                <Icon
-                  name="mail"
-                  size={16}
-                  badgeCount={2}
-                />
-              </button>
+              <Link to="/cart">
+                <button
+                  type="button"
+                  className={styles.iconButton}
+                >
+                  <Icon
+                    name="mail"
+                    size={16}
+                    badgeCount={2}
+                  />
+                </button>
+              </Link>
             </div>
           </div>
 
