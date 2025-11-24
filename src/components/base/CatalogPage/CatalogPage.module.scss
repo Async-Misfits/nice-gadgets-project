@@ -1,0 +1,83 @@
+@use '@/styles/mixins' as *;
+
+.catalogPage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 40px;
+}
+
+.container {
+  width: 100%;
+  padding: 24px 16px;
+
+  @include tablet {
+    padding: 32px 24px;
+  }
+
+  @include desktop {
+    width: 1200px;
+    padding: 40px 0;
+    margin: 0 auto;
+  }
+}
+
+.breadcrumbsWrapper {
+  margin-bottom: 40px;
+}
+
+.catalogHeader {
+  margin-bottom: 32px;
+
+  .modelsCount {
+    margin-top: 8px;
+    color: var(--color-secondary);
+    font-weight: 600;
+  }
+}
+
+.catalogControls {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.controlGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  .label {
+    color: var(--color-secondary);
+    font-weight: 600;
+    font-size: 12px;
+  }
+}
+
+.dropdownSort {
+  width: 176px;
+
+  @media (max-width: 639px) {
+    width: 100%;
+    min-width: 136px;
+  }
+}
+
+.dropdownPerPage {
+  width: 128px;
+
+  @media (max-width: 639px) {
+    width: 100%;
+    min-width: 128px;
+  }
+}
+
+.gridWrapper {
+  margin-bottom: 40px;
+}
+
+.paginationWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
