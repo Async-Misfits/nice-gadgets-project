@@ -7,6 +7,7 @@ import CatalogPage from '../components/base/CatalogPage/CatalogPage';
 import { CartPage } from '../pages/CardPage/CartPage';
 import { ContactsPage } from '../pages/ContactsPage/ContactsPage';
 import { RightsPage } from '../pages/RightsPage/RightsPage';
+import { Page404 } from '../pages/Page404/Page404';
 
 export const router = createHashRouter([
   {
@@ -46,7 +47,7 @@ export const router = createHashRouter([
       { path: 'accessories/:itemId', element: <ItemPage /> },
       { path: 'cart', element: <CartPage /> },
       { path: 'favorites', element: <FavoritesPage /> },
-      { path: '*', element: <div>not found</div> },
+      { path: '*', element: <Page404 /> },
       { path: 'contacts', element: <ContactsPage /> },
       { path: 'rights', element: <RightsPage /> },
     ],

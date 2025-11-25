@@ -10,6 +10,7 @@ import { Breadcrumbs } from '../../components/ui/Breadcrumbs/Breadcrumbs';
 import type { Product } from '../../types/Product';
 import { Grid } from '../../components/layout/Grid';
 import styles from './itemPage.module.scss';
+import { ProductNotFound } from '../ProductNotFound/ProductNotFound';
 const BASE = import.meta.env.BASE_URL;
 
 export const ItemPage = () => {
@@ -27,7 +28,7 @@ export const ItemPage = () => {
     accessories.find((p) => p.id === itemId);
 
   if (!product) {
-    return <div>Product not found</div>;
+    return <ProductNotFound />;
   }
 
   return (
