@@ -3,6 +3,7 @@ import { Typography } from '../../base/Typography/Typography';
 import { Button } from '../../base/Button/Button';
 import styles from './Footer.module.scss';
 import { Icon } from '../../base/icons';
+import { Divider } from '../../base/Divider/Divider';
 
 export const Footer = () => {
   const scrollToTop = () => {
@@ -14,6 +15,7 @@ export const Footer = () => {
 
   return (
     <footer className={styles.footer}>
+      <Divider />
       <Grid>
         <div className={styles.topBar}>
           <div className={styles.topContent}>
