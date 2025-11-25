@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import type { FC } from 'react';
 import styles from './PromoSlide.module.scss';
 import { Typography } from '../Typography';
+import { Link } from 'react-router';
 
 type PromoSlideProps = {
   /**
@@ -20,6 +21,12 @@ type PromoSlideProps = {
   buttonLabel: string;
 
   /**
+   * Route where the CTA link should navigate.
+   * Example: "/phones" or "/accessories".
+   */
+  linkTo: string;
+
+  /**
    * Source URL of the image shown on the right.
    */
   imageSrc: string;
@@ -28,11 +35,6 @@ type PromoSlideProps = {
    * Accessible text for the image.
    */
   imageAlt?: string;
-
-  /**
-   * Optional callback fired when the CTA button is clicked.
-   */
-  onButtonClick?: () => void;
 
   /**
    * Optional custom class for extending styles.
@@ -44,32 +46,19 @@ type PromoSlideProps = {
  * PromoSlide component.
  *
  * A promotional slide used inside sliders or hero sections.
- * Displays a title, optional description, CTA button, and an image.
+ * Displays a title, optional description, CTA link, and an image.
  *
  * Layout:
- * - Left side: text content (title, description, CTA button)
+ * - Left side: text content (title, description, CTA)
  * - Right side: image
- *
- * Typically used inside a custom Slider component.
- *
- * @component
- * @example
- * <PromoSlide
- *   title="Now available in our store! 👌"
- *   description="Be the first!"
- *   buttonLabel="Order now"
- *   imageSrc="/gadgets/img/banner-accessories.png"
- *   imageAlt="Accessories promo"
- *   onButtonClick={() => console.log("Clicked")}
- * />
  */
 export const PromoSlide: FC<PromoSlideProps> = ({
   title,
   description,
   buttonLabel,
+  linkTo,
   imageSrc,
   imageAlt,
-  onButtonClick,
   className,
 }) => {
   return (
@@ -92,13 +81,13 @@ export const PromoSlide: FC<PromoSlideProps> = ({
           </Typography>
         )}
 
-        <button
+        <Link
           type="button"
           className={classNames(styles.button)}
-          onClick={onButtonClick}
+          to={linkTo}
         >
           <Typography variant="button">{buttonLabel}</Typography>
-        </button>
+        </Link>
       </div>
       <div className={classNames(styles.imageWrapper)}>
         <img
