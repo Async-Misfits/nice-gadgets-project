@@ -3,6 +3,7 @@ import './CartItem.scss';
 import { Typography } from '../Typography';
 import { Icon } from '../icons';
 import { Button } from '../Button';
+import { Link } from 'react-router';
 
 /**
  * CartItem component
@@ -18,6 +19,7 @@ interface CartItemProps {
   image: string;
   price: number;
   quantity: number;
+  category: string;
 
   onIncrease: (itemId: string) => void;
   onDecrease: (itemId: string, quantity: number) => void;
@@ -30,11 +32,14 @@ const CartItem: React.FC<CartItemProps> = ({
   image,
   price,
   quantity,
+  category,
   onIncrease,
   onDecrease,
   onRemove,
 }) => {
   const isMinusDisabled = quantity === 1;
+
+  const productLink = `/${category}/${itemId}`;
 
   return (
     <div className="cartItem">
@@ -47,14 +52,24 @@ const CartItem: React.FC<CartItemProps> = ({
           <Icon name="x" />
         </Button>
         <div className="cartItem__imagebox">
-          <img
-            src={image}
-            alt={title}
-            className="cartItem__image"
-          />
+          <Link
+            to={productLink}
+            className="cartItem__link"
+          >
+            <img
+              src={image}
+              alt={title}
+              className="cartItem__image"
+            />
+          </Link>
         </div>
         <div className="cartItem__title">
-          <Typography variant="body">{title}</Typography>
+          <Link
+            to={productLink}
+            className="cartItem__link"
+          >
+            <Typography variant="body">{title}</Typography>
+          </Link>
         </div>
       </div>
       <div className="cartItem__values">
