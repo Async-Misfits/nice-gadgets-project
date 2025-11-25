@@ -20,7 +20,31 @@ export const Pagination: React.FC<PaginationProps> = ({
 
   if (totalPages <= 1) return null;
 
-  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+  const getPaginationItems = () => {
+    if (totalPages <= 6) {
+      return Array.from({ length: totalPages }, (_, i) => i + 1);
+    }
+
+    if (currentPage <= 3) {
+      return [1, 2, 3, '...', totalPages];
+    }
+
+    if (currentPage >= totalPages - 2) {
+      return [1, '...', totalPages - 2, totalPages - 1, totalPages];
+    }
+
+    return [
+      1,
+      '...',
+      currentPage - 1,
+      currentPage,
+      currentPage + 1,
+      '...',
+      totalPages,
+    ];
+  };
+
+  const pages = getPaginationItems();
 
   const handlePrev = () => {
     if (currentPage > 1) onPageChange(currentPage - 1);
@@ -41,15 +65,18 @@ export const Pagination: React.FC<PaginationProps> = ({
       />
 
       <div className={styles.pagesList}>
-        {pages.map((page) => (
-          <Button
-            key={page}
-            variant="square"
-            onClick={() => onPageChange(page)}
-            buttonState={currentPage === page ? 'selected' : 'default'}
-          >
-            {page}
-          </Button>
+        {pages.map((page, index) => (
+          <React.Fragment key={index}>
+            {typeof page === 'number' ?
+              <Button
+                variant="square"
+                onClick={() => onPageChange(page)}
+                buttonState={currentPage === page ? 'selected' : 'default'}
+              >
+                {page}
+              </Button>
+            : <span className={styles.dots}>...</span>}
+          </React.Fragment>
         ))}
       </div>
 

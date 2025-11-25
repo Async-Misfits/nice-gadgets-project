@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { ProductsList } from '../ProductsList/ProductsList';
 import type { Product } from '../../../types/Product';
 import Dropdown from '../Dropdown/Dropdown';
@@ -20,7 +20,6 @@ const perPageOptions = [
   { name: 8, label: '8' },
   { name: 16, label: '16' },
   { name: 32, label: '32' },
-  { name: 64, label: '64' },
 ];
 
 const categoryTitles: Record<string, string> = {
@@ -48,6 +47,13 @@ export const CatalogPage: React.FC<Props> = ({ category }) => {
   const [sortType, setSortType] = useState<string>(SortType.NEWEST);
   const [itemsPerPage, setItemsPerPage] = useState<number | string>(16);
   const [currentPage, setCurrentPage] = useState<number>(1);
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, [currentPage]);
 
   const sortedProducts = useMemo(() => {
     return getSortedProducts(productsData, sortType);

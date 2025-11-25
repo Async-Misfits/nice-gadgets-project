@@ -1,3 +1,4 @@
+// Pagination.module.scss
 .pagination {
   display: flex;
   justify-content: center;
@@ -9,4 +10,16 @@
 .pagesList {
   display: flex;
   gap: 8px;
+  align-items: center; // Важливо для вирівнювання крапок
+}
+
+// Додаємо цей клас
+.dots {
+  display: flex;
+  justify-content: center;
+  align-items: end; // Крапки краще виглядають, коли "лежать" трохи нижче
+  width: 10px; // Фіксована ширина, щоб не стрибало
+  height: 32px; // Висота як у кнопки (32px - стандарт для square variant, перевір свої стилі)
+  line-height: 28px;
+  color: #333; // Колір тексту (підстав змінну, якщо є, наприклад var(--color-primary))
 }
