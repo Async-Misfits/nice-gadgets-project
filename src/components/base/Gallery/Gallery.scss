@@ -29,7 +29,8 @@
 
 .gallery-main-img {
   max-width: 100%;
-  max-height: 100%;
+  // max-height: 100%; //на мобілі не працює
+  height: 100%;
   object-fit: contain;
   display: block;
 }
