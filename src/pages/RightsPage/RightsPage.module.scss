@@ -1,0 +1,32 @@
+@use '@/styles/mixins' as *;
+
+.fullLineWrapper {
+  margin-top: 24px;
+  grid-column: span 4;
+
+  @include tablet {
+    grid-column: span 12;
+  }
+
+  @include desktop {
+    grid-column: span 24;
+  }
+}
+
+.title {
+  grid-column: 1 / -1;
+}
+
+.section {
+  grid-column: 1 / -1;
+  margin-top: 48px;
+
+  @include desktop {
+    grid-column: span 12;
+  }
+}
+
+.text {
+  color: var(--color-gray-secondary);
+  line-height: 1.6;
+}
