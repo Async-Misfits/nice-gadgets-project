@@ -6,6 +6,7 @@ import { Grid } from '../../../layout/Grid';
 import styles from './MainSlider.module.scss';
 import { Icon } from '../../../base/icons';
 import { SliderDots } from '../../../base/SliderDots/SliderDots';
+import { Button } from '../../../base/Button';
 const BASE = import.meta.env.BASE_URL;
 
 export const MainSlider = () => {
@@ -22,13 +23,13 @@ export const MainSlider = () => {
 
   return (
     <Grid>
-      <button
-        type="button"
+      <Button
+        variant="squareArrow"
         className={styles.arrowLeft}
         onClick={handlePrev}
       >
         <Icon name="chevron-left" />
-      </button>
+      </Button>
       <div className={styles.sliderCell}>
         <Slider
           ref={swiperRef}
@@ -38,45 +39,39 @@ export const MainSlider = () => {
           onSwiperInit={setSwiper}
         >
           <PromoSlide
-            title="Now available in our store! 👌"
-            description="Be the first!"
-            buttonLabel="Order now"
+            title="Accessories that complete your iPhone"
+            description="MagSafe chargers, stylish cases, and more — all perfectly compatible."
+            buttonLabel="Shop accessories"
+            linkTo="/accessories"
             imageSrc={`${BASE}images/banner-accessories.png`}
-            imageAlt="iPhone 14 Pro in deep purple"
-            onButtonClick={() => {
-              console.log('Order now clicked');
-            }}
+            imageAlt="iPhone cases and MagSafe accessories"
           />
           <PromoSlide
-            title="Now available in our store! 👌"
-            description="Be the first!"
-            buttonLabel="Order now"
+            title="All your favorite iPhones in one place"
+            description="Pick your color, pick your storage — get a 12-month warranty and fast delivery."
+            buttonLabel="Browse phones"
+            linkTo="/phones"
             imageSrc={`${BASE}images/banner-phones.png`}
-            imageAlt="iPhone 14 Pro in deep purple"
-            onButtonClick={() => {
-              console.log('Order now clicked');
-            }}
+            imageAlt="Different iPhone models in multiple colors"
           />
           <PromoSlide
-            title="Now available in our store! 👌"
-            description="Be the first!"
-            buttonLabel="Order now"
+            title="Tablets for work, study, and fun"
+            description="From compact mini to powerful Pro — find the iPad that fits your lifestyle."
+            buttonLabel="Browse tablets"
+            linkTo="/tablets"
             imageSrc={`${BASE}images/banner-tablets.png`}
-            imageAlt="iPhone 14 Pro in deep purple"
-            onButtonClick={() => {
-              console.log('Order now clicked');
-            }}
+            imageAlt="Lineup of different iPad models"
           />
         </Slider>
         <SliderDots swiper={swiper} />
       </div>
-      <button
-        type="button"
+      <Button
+        variant="squareArrow"
         className={styles.arrowRight}
         onClick={handleNext}
       >
         <Icon name="chevron-right" />
-      </button>
+      </Button>
     </Grid>
   );
 };

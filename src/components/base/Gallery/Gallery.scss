@@ -218,6 +218,7 @@
   overflow: visible !important;
   display: flex;
   justify-content: center;
+  height: auto !important;
 }
 
 @include tablet {
