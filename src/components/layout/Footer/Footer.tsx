@@ -4,6 +4,7 @@ import { Button } from '../../base/Button/Button';
 import styles from './Footer.module.scss';
 import { Icon } from '../../base/icons';
 import { Divider } from '../../base/Divider/Divider';
+import { Link } from 'react-router';
 
 export const Footer = () => {
   const scrollToTop = () => {
@@ -44,24 +45,24 @@ export const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="/contacts">
+                <Link to="/contacts">
                   <Typography
                     variant="body"
                     uppercase
                   >
                     Contacts
                   </Typography>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/rights">
+                <Link to="/rights">
                   <Typography
                     variant="body"
                     uppercase
                   >
                     Rights
                   </Typography>
-                </a>
+                </Link>
               </li>
             </ul>
 

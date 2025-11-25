@@ -5,6 +5,8 @@ import { FavoritesPage } from '../pages/FavoritesPage/FavoritesPage';
 import { ItemPage } from '../pages/ItemPage';
 import CatalogPage from '../components/base/CatalogPage/CatalogPage';
 import { CartPage } from '../pages/CardPage/CartPage';
+import { ContactsPage } from '../pages/ContactsPage/ContactsPage';
+import { RightsPage } from '../pages/RightsPage/RightsPage';
 
 export const router = createHashRouter([
   {
@@ -45,6 +47,8 @@ export const router = createHashRouter([
       { path: 'cart', element: <CartPage /> },
       { path: 'favorites', element: <FavoritesPage /> },
       { path: '*', element: <div>not found</div> },
+      { path: 'contacts', element: <ContactsPage /> },
+      { path: 'rights', element: <RightsPage /> },
     ],
   },
 ]);
