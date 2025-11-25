@@ -42,6 +42,8 @@ export const Breadcrumbs = ({ showBack = false }: BreadcrumbsProps) => {
     return { label, pathTo };
   });
 
+  const backPath = crumbs.length > 1 ? crumbs[crumbs.length - 2].pathTo : '/';
+
   return (
     <nav className={styles.breadcrumbs}>
       <div className={styles.chain}>
@@ -80,7 +82,7 @@ export const Breadcrumbs = ({ showBack = false }: BreadcrumbsProps) => {
       </div>
       {showBack && (
         <Link
-          to=".."
+          to={backPath}
           className={styles.backLink}
         >
           <Icon name="chevron-left" />
