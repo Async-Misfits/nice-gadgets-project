@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router';
 import styles from './ProductNotFound.module.scss';
 import { Button } from '../../components/base/Button';
 import { Typography } from '../../components/base/Typography';
+const BASE = import.meta.env.BASE_URL;
 
 export const ProductNotFound = () => {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ export const ProductNotFound = () => {
         <div className={styles.imageWrapper}>
           <div className={styles.imageBg}></div>
           <img
-            src="/gadgets/img/product-not-found.png"
+            src={`${BASE}/gadgets/img/product-not-found.png`}
             alt="Product not found cat"
             className={styles.image}
           />
