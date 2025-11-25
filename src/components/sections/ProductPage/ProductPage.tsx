@@ -20,6 +20,8 @@ export const ProductPage = ({ product }: ProductPageProps) => {
     product.capacityAvailable?.[0] ?? '',
   );
 
+  const [isSelected, setIsSelected] = useState(false);
+
   const dispatch = useAppDispatch();
 
   const isInCart = useAppSelector((state) =>
@@ -36,6 +38,8 @@ export const ProductPage = ({ product }: ProductPageProps) => {
     } else {
       dispatch(addToCart(product.id));
     }
+
+    setIsSelected((prev) => !prev);
   };
 
   const handleFavoriteClick = () => {
@@ -139,6 +143,7 @@ export const ProductPage = ({ product }: ProductPageProps) => {
           <div className={styles.buttonWrapper}>
             <Button
               variant="primary"
+              buttonState={isSelected ? 'selected' : 'default'}
               onClick={handleCartClick}
             >
               {isInCart ? 'Added to cart' : 'Add to cart'}
