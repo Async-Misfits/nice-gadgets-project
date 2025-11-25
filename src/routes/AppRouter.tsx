@@ -4,6 +4,7 @@ import { HomePage } from '../pages/HomePage/HomePage';
 import { FavoritesPage } from '../pages/FavoritesPage/FavoritesPage';
 import { ItemPage } from '../pages/ItemPage';
 import CatalogPage from '../components/base/CatalogPage/CatalogPage';
+import { CartPage } from '../pages/CardPage/CartPage';
 
 export const router = createHashRouter([
   {
@@ -41,7 +42,7 @@ export const router = createHashRouter([
         ),
       },
       { path: 'accessories/:itemId', element: <ItemPage /> },
-      { path: 'cart', element: <div>cart</div> },
+      { path: 'cart', element: <CartPage /> },
       { path: 'favorites', element: <FavoritesPage /> },
       { path: '*', element: <div>not found</div> },
     ],
