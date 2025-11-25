@@ -118,6 +118,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
       </div>
       <div className="card__buttons">
         <Button
+          disabled={isAdded}
           onClick={() => addToCart(product.itemId)}
           buttonState={isAdded ? 'selected' : 'default'}
         >
