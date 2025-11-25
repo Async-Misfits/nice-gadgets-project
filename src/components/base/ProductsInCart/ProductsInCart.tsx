@@ -5,6 +5,7 @@ import { Button } from '../Button';
 import { Grid } from '../../layout/Grid';
 import { Typography } from '../Typography';
 import { useAppDispatch } from '../../../store/hooks';
+import { useNavigate } from 'react-router-dom';
 import {
   addToCart,
   removeFromCart,
@@ -32,6 +33,7 @@ const ProductsInCart: React.FC<ProductsInCartProps> = ({
   totalPrice,
 }) => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const handleIncrease = (itemId: string) => {
     dispatch(addToCart(itemId));
@@ -76,7 +78,7 @@ const ProductsInCart: React.FC<ProductsInCartProps> = ({
             </Typography>
           </div>
           <div className="products-in-cart__line"></div>
-          <Button>Checkout</Button>
+          <Button onClick={() => navigate('/success')}>Checkout</Button>
         </div>
       </div>
     </Grid>

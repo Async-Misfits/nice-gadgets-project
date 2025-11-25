@@ -8,6 +8,7 @@ import { CartPage } from '../pages/CardPage/CartPage';
 import { ContactsPage } from '../pages/ContactsPage/ContactsPage';
 import { RightsPage } from '../pages/RightsPage/RightsPage';
 import { Page404 } from '../pages/Page404/Page404';
+import { OrderSuccessPage } from '../pages/OrderSuccessPage/OrderSuccessPage';
 
 export const router = createHashRouter([
   {
@@ -50,6 +51,7 @@ export const router = createHashRouter([
       { path: '*', element: <Page404 /> },
       { path: 'contacts', element: <ContactsPage /> },
       { path: 'rights', element: <RightsPage /> },
+      { path: 'success', element: <OrderSuccessPage /> },
     ],
   },
 ]);
