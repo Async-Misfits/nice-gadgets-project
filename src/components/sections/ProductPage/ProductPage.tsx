@@ -24,6 +24,11 @@ export const ProductPage = ({ product }: ProductPageProps) => {
     navigate(`/${product.category}/${newId}`);
   };
 
+  const handleColorChange = (color: string) => {
+    const newId = `${product.namespaceId}-${product.capacity.toLowerCase()}-${color}`;
+    navigate(`/${product.category}/${newId}`);
+  };
+
   const [isSelected, setIsSelected] = useState(false);
 
   const dispatch = useAppDispatch();
@@ -95,6 +100,10 @@ export const ProductPage = ({ product }: ProductPageProps) => {
                     key={color}
                     variant="circle"
                     fillColor={color}
+                    onClick={() => handleColorChange(color)}
+                    buttonState={
+                      color === product.color ? 'selected' : 'default'
+                    }
                   />
                 );
               })}
