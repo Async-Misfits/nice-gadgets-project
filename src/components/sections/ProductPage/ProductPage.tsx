@@ -117,7 +117,9 @@ export const ProductPage = ({ product }: ProductPageProps) => {
               className={styles.label}
               uppercase
             >
-              Select capacity
+              {product.category === 'accessories' ?
+                'Select size'
+              : 'Select capacity'}
             </Typography>
 
             <div className={styles.capacity}>
@@ -156,7 +158,7 @@ export const ProductPage = ({ product }: ProductPageProps) => {
           <div className={styles.buttonWrapper}>
             <Button
               variant="primary"
-              buttonState={isSelected ? 'selected' : 'default'}
+              buttonState={isSelected ? 'default' : 'selected'}
               onClick={handleCartClick}
             >
               {isInCart ? 'Added to cart' : 'Add to cart'}
