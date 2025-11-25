@@ -10,15 +10,26 @@ import { Gallery } from '../../base/Gallery/Gallery';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { addToCart, removeFromCart } from '../../../store/cartSlice';
 import { toggleFavorite } from '../../../store/favoritesSlice';
+import { useNavigate } from 'react-router-dom';
 
 type ProductPageProps = {
   product: ProductDetails;
 };
 
 export const ProductPage = ({ product }: ProductPageProps) => {
-  const [activeCapacity, setActiveCapacity] = useState(
-    product.capacityAvailable?.[0] ?? '',
-  );
+  const navigate = useNavigate();
+
+  const handleCapacityChange = (capacity: string) => {
+    const newId = `${product.namespaceId}-${capacity.toLowerCase()}-${product.color}`;
+    navigate(`/${product.category}/${newId}`);
+  };
+
+  const handleColorChange = (color: string) => {
+    const newId = `${product.namespaceId}-${product.capacity.toLowerCase()}-${color}`;
+    navigate(`/${product.category}/${newId}`);
+  };
+
+  const [isSelected, setIsSelected] = useState(false);
 
   const dispatch = useAppDispatch();
 
@@ -36,6 +47,8 @@ export const ProductPage = ({ product }: ProductPageProps) => {
     } else {
       dispatch(addToCart(product.id));
     }
+
+    setIsSelected((prev) => !prev);
   };
 
   const handleFavoriteClick = () => {
@@ -87,6 +100,10 @@ export const ProductPage = ({ product }: ProductPageProps) => {
                     key={color}
                     variant="circle"
                     fillColor={color}
+                    onClick={() => handleColorChange(color)}
+                    buttonState={
+                      color === product.color ? 'selected' : 'default'
+                    }
                   />
                 );
               })}
@@ -108,9 +125,9 @@ export const ProductPage = ({ product }: ProductPageProps) => {
                 <button
                   key={c}
                   className={`${styles.capBtn} ${
-                    c === activeCapacity ? styles.activeCap : ''
+                    c === product.capacity ? styles.activeCap : ''
                   }`}
-                  onClick={() => setActiveCapacity(c)}
+                  onClick={() => handleCapacityChange(c)}
                 >
                   {c}
                 </button>
@@ -139,18 +156,15 @@ export const ProductPage = ({ product }: ProductPageProps) => {
           <div className={styles.buttonWrapper}>
             <Button
               variant="primary"
+              buttonState={isSelected ? 'selected' : 'default'}
               onClick={handleCartClick}
             >
               {isInCart ? 'Added to cart' : 'Add to cart'}
             </Button>
             <Button
               variant="iconWrapper"
-              iconButton={
-                <Icon
-                  name={isFavorite ? 'heart-filled' : 'heart'}
-                  onClick={handleFavoriteClick}
-                />
-              }
+              onClick={handleFavoriteClick}
+              iconButton={<Icon name={isFavorite ? 'heart-filled' : 'heart'} />}
             />
           </div>
 
