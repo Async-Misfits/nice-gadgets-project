@@ -9,6 +9,8 @@
 .gallery-main {
   width: 100%;
   margin-bottom: 16px;
+
+  height: auto;
 }
 
 .gallery-main-inner {
@@ -21,6 +23,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  height: auto;
 }
 
 .gallery-main-img {
