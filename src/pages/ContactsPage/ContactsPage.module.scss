@@ -1,0 +1,72 @@
+@use '@/styles/mixins' as *;
+
+.fullLineWrapper {
+  margin-top: 24px;
+  grid-column: span 4;
+
+  @include tablet {
+    grid-column: span 12;
+  }
+
+  @include desktop {
+    grid-column: span 24;
+  }
+}
+
+.title {
+  grid-column: 1 / -1;
+}
+
+.cards {
+  display: grid;
+  gap: 24px;
+  grid-column: 1 / -1;
+
+  @include tablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include desktop {
+    grid-template-columns: repeat(24, 1fr);
+  }
+}
+
+.card {
+  border-radius: 8px;
+  padding: 24px;
+  grid-column: 1 / -1;
+
+  @include tablet {
+    grid-column: span 6;
+  }
+
+  @include desktop {
+    grid-column: span 8;
+  }
+}
+
+.cardText {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.phone {
+  color: var(--color-gray-secondary);
+}
+
+.workHours {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.day {
+  color: var(--color-white);
+}
+
+.time {
+  color: var(--color-gray-secondary);
+}
