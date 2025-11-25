@@ -20,12 +20,19 @@ export const ProductPage = ({ product }: ProductPageProps) => {
   const navigate = useNavigate();
 
   const handleCapacityChange = (capacity: string) => {
-    const newId = `${product.namespaceId}-${capacity.toLowerCase()}-${product.color}`;
+    const normalizedColor = product.color.toLowerCase().replace(/\s+/g, '-');
+    const normalizedCapacity = capacity.toLowerCase().replace(/\s+/g, '-');
+
+    const newId = `${product.namespaceId}-${normalizedCapacity}-${normalizedColor}`;
+
     navigate(`/${product.category}/${newId}`);
   };
 
   const handleColorChange = (color: string) => {
-    const newId = `${product.namespaceId}-${product.capacity.toLowerCase()}-${color}`;
+    const normalizedColor = color.toLowerCase().replace(/\s+/g, '-');
+
+    const newId = `${product.namespaceId}-${product.capacity.toLowerCase()}-${normalizedColor}`;
+
     navigate(`/${product.category}/${newId}`);
   };
 
