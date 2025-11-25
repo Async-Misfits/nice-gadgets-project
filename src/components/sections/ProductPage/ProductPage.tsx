@@ -154,12 +154,8 @@ export const ProductPage = ({ product }: ProductPageProps) => {
             </Button>
             <Button
               variant="iconWrapper"
-              iconButton={
-                <Icon
-                  name={isFavorite ? 'heart-filled' : 'heart'}
-                  onClick={handleFavoriteClick}
-                />
-              }
+              onClick={handleFavoriteClick}
+              iconButton={<Icon name={isFavorite ? 'heart-filled' : 'heart'} />}
             />
           </div>
 
