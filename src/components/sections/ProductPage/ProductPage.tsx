@@ -10,15 +10,19 @@ import { Gallery } from '../../base/Gallery/Gallery';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { addToCart, removeFromCart } from '../../../store/cartSlice';
 import { toggleFavorite } from '../../../store/favoritesSlice';
+import { useNavigate } from 'react-router-dom';
 
 type ProductPageProps = {
   product: ProductDetails;
 };
 
 export const ProductPage = ({ product }: ProductPageProps) => {
-  const [activeCapacity, setActiveCapacity] = useState(
-    product.capacityAvailable?.[0] ?? '',
-  );
+  const navigate = useNavigate();
+
+  const handleCapacityChange = (capacity: string) => {
+    const newId = `${product.namespaceId}-${capacity.toLowerCase()}-${product.color}`;
+    navigate(`/${product.category}/${newId}`);
+  };
 
   const [isSelected, setIsSelected] = useState(false);
 
@@ -112,9 +116,9 @@ export const ProductPage = ({ product }: ProductPageProps) => {
                 <button
                   key={c}
                   className={`${styles.capBtn} ${
-                    c === activeCapacity ? styles.activeCap : ''
+                    c === product.capacity ? styles.activeCap : ''
                   }`}
-                  onClick={() => setActiveCapacity(c)}
+                  onClick={() => handleCapacityChange(c)}
                 >
                   {c}
                 </button>
