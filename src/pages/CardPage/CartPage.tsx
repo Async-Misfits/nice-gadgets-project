@@ -18,6 +18,7 @@ type CartItemData = {
   image: string;
   price: number;
   quantity: number;
+  category: string;
 };
 
 export const CartPage: React.FC = () => {
@@ -42,6 +43,7 @@ export const CartPage: React.FC = () => {
           title: product.name,
           image: product.image,
           price: product.price,
+          category: product.category,
           quantity: item.quantity,
         };
       })

@@ -16,6 +16,7 @@ interface CartItemData {
   title: string;
   image: string;
   price: number;
+  category: string;
   quantity: number;
 }
 
@@ -56,6 +57,7 @@ const ProductsInCart: React.FC<ProductsInCartProps> = ({
             image={item.image}
             price={item.price}
             quantity={item.quantity}
+            category={item.category}
             onIncrease={handleIncrease}
             onDecrease={handleDecrease}
             onRemove={handleRemove}
