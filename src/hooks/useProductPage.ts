@@ -34,7 +34,6 @@ export const useProductPage = (itemId?: string) => {
       try {
         setState((prev) => ({ ...prev, loading: true, error: null }));
 
-        // 1) сам товар з деталями
         const { data, error } = await supabase
           .from('products')
           .select(
@@ -63,7 +62,6 @@ export const useProductPage = (itemId?: string) => {
 
         const { product, details } = mapProductWithDetails(data);
 
-        // 2) пов’язані товари (та сама category, інший item_id)
         const { data: relatedRaw, error: relatedError } = await supabase
           .from('products')
           .select('*')

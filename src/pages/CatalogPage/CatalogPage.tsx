@@ -1,13 +1,12 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { ProductsList } from '../ProductsList/ProductsList';
-import type { Product } from '../../../types/Product';
-import Dropdown from '../Dropdown/Dropdown';
-import { Pagination } from '../Pagination/Pagination';
-import { Breadcrumbs } from '../../ui/Breadcrumbs/Breadcrumbs';
-import { Typography } from '../Typography/Typography';
+import { ProductsList } from '../../components/base/ProductsList/ProductsList';
+import Dropdown from '../../components/base/Dropdown/Dropdown';
+import { Pagination } from '../../components/base/Pagination/Pagination';
+import { Breadcrumbs } from '../../components/ui/Breadcrumbs/Breadcrumbs';
+import { Typography } from '../../components/base/Typography/Typography';
 import { getSortedProducts, SortType } from './catalogHelper';
 import styles from './CatalogPage.module.scss';
-import productsJson from '../../../api/products.json';
+import { useProducts } from '../../hooks/useProducts';
 
 const sortOptions = [
   { name: SortType.NEWEST, label: 'Newest' },
@@ -32,17 +31,8 @@ interface Props {
   category: 'phones' | 'tablets' | 'accessories';
 }
 
-const BASE = import.meta.env.BASE_URL;
-
 export const CatalogPage: React.FC<Props> = ({ category }) => {
-  const productsData = useMemo(() => {
-    return (productsJson as unknown as Product[])
-      .filter((product) => product.category === category)
-      .map((p) => ({
-        ...p,
-        image: `${BASE}gadgets/${p.image}`,
-      }));
-  }, [category]);
+  const { products, loading, error } = useProducts(category);
 
   const [search, setSearch] = useState('');
   const [sortType, setSortType] = useState<string>(SortType.NEWEST);
@@ -57,8 +47,8 @@ export const CatalogPage: React.FC<Props> = ({ category }) => {
   }, [currentPage]);
 
   const sortedProducts = useMemo(() => {
-    return getSortedProducts(productsData, sortType);
-  }, [sortType, productsData]);
+    return getSortedProducts(products, sortType);
+  }, [sortType, products]);
 
   const filteredProducts = useMemo(() => {
     const words = search.toLowerCase().split(' ').filter(Boolean);
@@ -107,9 +97,19 @@ export const CatalogPage: React.FC<Props> = ({ category }) => {
             variant="body"
             className={styles.modelsCount}
           >
-            {filteredProducts.length} models
+            {loading ?
+              'Loading...'
+            : error ?
+              'Error'
+            : `${products.length} models`}
           </Typography>
         </div>
+
+        {error && (
+          <div className={styles.error}>
+            <Typography variant="body">Error: {error}</Typography>
+          </div>
+        )}
 
         <div className={styles.catalogControls}>
           <div className={styles.controlGroup}>
@@ -156,13 +156,15 @@ export const CatalogPage: React.FC<Props> = ({ category }) => {
         </div>
 
         <div className={styles.gridWrapper}>
-          <ProductsList products={visibleProducts} />
+          {loading ?
+            <Typography variant="body">Loading...</Typography>
+          : <ProductsList products={visibleProducts} />}
         </div>
 
-        {!isAll && (
+        {!isAll && !loading && (
           <div className={styles.paginationWrapper}>
             <Pagination
-              total={filteredProducts.length}
+              total={products.length}
               perPage={limit}
               currentPage={currentPage}
               onPageChange={setCurrentPage}

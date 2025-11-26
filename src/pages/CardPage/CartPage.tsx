@@ -1,16 +1,13 @@
 // src/pages/CartPage/CartPage.tsx
 import React, { useMemo } from 'react';
-
-import productsFromServer from '../../api/products.json';
 import { useAppSelector } from '../../store/hooks';
 import {
   selectCartItems,
   selectCartTotalCount,
   selectCartTotalPrice,
 } from '../../store/selectors';
-import type { Product } from '../../types/Product';
 import { CartTemplate } from '../../components/Templates/CartPage/CartTemplate';
-const BASE = import.meta.env.BASE_URL;
+import { useProducts } from '../../hooks/useProducts';
 
 type CartItemData = {
   itemId: string;
@@ -22,16 +19,17 @@ type CartItemData = {
 };
 
 export const CartPage: React.FC = () => {
-  const products = (productsFromServer as Product[]).map((p) => ({
-    ...p,
-    image: `${BASE}gadgets/${p.image}`,
-  }));
+  const { products } = useProducts();
 
   const cartItems = useAppSelector(selectCartItems);
   const totalCount = useAppSelector(selectCartTotalCount);
   const totalPrice = useAppSelector(selectCartTotalPrice(products));
 
   const itemsForRender: CartItemData[] = useMemo(() => {
+    if (!products.length || !cartItems.length) {
+      return [];
+    }
+
     return cartItems
       .map((item) => {
         const product = products.find((p) => p.itemId === item.itemId);
