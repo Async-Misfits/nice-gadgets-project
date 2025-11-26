@@ -19,13 +19,23 @@ export const Footer = () => {
       <Divider />
       <Grid>
         <div className={styles.topBar}>
+        {/* Temporarily add styles and a line for testing */}
           <div className={styles.topContent}>
+            <span style={{ color: 'yellow', background: 'red' }}>LOGO TEST</span>
+            <Icon
+              name="logo"
+              width={89}
+              height={32}
+              style={{ border: '1px solid red' }}
+            />
+          </div>
+          {/* <div className={styles.topContent}>
             <Icon
               name="logo"
               width={89}
               height={32}
             />
-          </div>
+          </div> */}
         </div>
         <div className={styles.bottom}>
           <div className={styles.bottomContent}>
