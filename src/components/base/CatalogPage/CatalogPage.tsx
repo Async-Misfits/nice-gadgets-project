@@ -62,7 +62,7 @@ export const CatalogPage: React.FC<Props> = ({ category }) => {
 
   const filteredProducts = useMemo(() => {
     return sortedProducts.filter((p) =>
-      p.name.toLowerCase().includes(search.toLowerCase()),
+      p.name.toLowerCase().includes(search.trim().toLowerCase()),
     );
   }, [search, sortedProducts]);
 
@@ -141,7 +141,7 @@ export const CatalogPage: React.FC<Props> = ({ category }) => {
               type="text"
               value={search}
               placeholder="I'm searching..."
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(e) => setSearch(e.target.value.trim())}
               className={styles.searchInput}
             />
           </div>
