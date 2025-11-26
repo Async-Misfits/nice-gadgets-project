@@ -6,6 +6,7 @@
   min-width: 288px;
   max-width: 591px;
   background-color: #161827;
+  border-radius: 8px;
 
   &__descripton {
     display: flex;
@@ -39,6 +40,10 @@
 
   &__title {
     width: 100%;
+    
+    &:hover {
+      color: #A378FF;
+    }
   }
 
   &__values {
