@@ -27,6 +27,12 @@ export const ItemPage = () => {
     tablets.find((p) => p.id === itemId) ||
     accessories.find((p) => p.id === itemId);
 
+  const relatedProducts = products
+    .filter(
+      (p) => p.category === product?.category && p.itemId !== product?.itemId,
+    )
+    .slice(0, 10);
+
   if (!product) {
     return <ProductNotFound />;
   }
@@ -42,7 +48,7 @@ export const ItemPage = () => {
 
       <ProductsCarousel
         title="You may also like"
-        products={products.slice(0, 10)}
+        products={relatedProducts}
       />
     </>
   );
