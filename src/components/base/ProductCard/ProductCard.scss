@@ -10,7 +10,22 @@
 
   height: 442px; 
   width: 212px;
-  flex-shrink: 0; 
+  flex-shrink: 0;
+
+  position: relative;
+  transition: 
+    transform 0.2s ease-in-out, 
+    box-shadow 0.2s ease-in-out,
+
+    background-color 0.2s ease-in-out;
+  
+  &:hover {
+    transform: translateY(-4px);
+    z-index: 10;
+    box-shadow: 4px 8px 15px #75767F;
+
+    background-color: #0F1121; 
+  }
   
   &__link {
     text-decoration: none;
@@ -44,6 +59,10 @@
     display: flex;
     align-items: flex-end;
     margin-bottom: 6px;
+
+      &:hover {
+      color: #A378FF;
+    }
   }
 
   &__prices {
