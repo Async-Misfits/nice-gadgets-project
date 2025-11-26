@@ -11,6 +11,7 @@ import {
   removeFromCart,
   setQuantity,
 } from '../../../store/cartSlice';
+import { Delivery } from '../Delivery/Delivery';
 
 interface CartItemData {
   itemId: string;
@@ -80,6 +81,7 @@ const ProductsInCart: React.FC<ProductsInCartProps> = ({
           <div className="products-in-cart__line"></div>
           <Button onClick={() => navigate('/success')}>Checkout</Button>
         </div>
+        <Delivery />
       </div>
     </Grid>
   );
