@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { Icon } from '../../base/icons/Icon';
 import Logo from '../../../../public/icons/Logo.svg?react';
 import styles from './MobileMenu.module.scss';
+import { useAppSelector } from '../../../store/hooks';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -28,6 +29,11 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
       document.body.style.overflow = '';
     };
   }, [isOpen]);
+
+  const cartCount = useAppSelector((state) => state.cart.items.length);
+  const favoritesCount = useAppSelector(
+    (state) => state.favorites.itemIds.length,
+  );
 
   return (
     <aside className={classNames(styles.menu, { [styles.isOpen]: isOpen })}>
@@ -79,7 +85,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
           <Icon
             name="heart"
             size={16}
-            badgeCount={2}
+            badgeCount={favoritesCount}
           />
         </NavLink>
 
@@ -93,6 +99,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
           <Icon
             name="mail"
             size={16}
+            badgeCount={cartCount}
           />
         </NavLink>
       </footer>
