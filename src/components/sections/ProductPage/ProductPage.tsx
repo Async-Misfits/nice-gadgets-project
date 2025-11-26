@@ -16,6 +16,29 @@ type ProductPageProps = {
   product: ProductDetails;
 };
 
+const colorMap: Record<string, string> = {
+  'spacegray': '#575757',
+  'space gray': '#575757',
+  'midnightgreen': '#004953',
+  'pacificblue': '#1a3d5b',
+  'starlight': '#f8f7f2',
+  'gold': '#f6d9d5',
+  'blue': '#48AEE6',
+  'yellow': '#fdea8c',
+  'green': '#a8da61',
+  'purple': '#B8AFE6',
+  'graphite': '#5c5c5c',
+  'sierra blue': '#69ABCE',
+  'sierrablue': '#69ABCE',
+  'spaceblack': '#4b4845',
+  'rose gold': '#f7d0cb',
+  'sky blue': '#87CEEB',
+
+  'Black': 'black',
+  'White': 'white',
+  'Red': 'red',
+};
+
 export const ProductPage = ({ product }: ProductPageProps) => {
   const navigate = useNavigate();
 
@@ -106,7 +129,7 @@ export const ProductPage = ({ product }: ProductPageProps) => {
                   <Button
                     key={color}
                     variant="circle"
-                    fillColor={color}
+                    fillColor={colorMap[color.trim().toLowerCase()] ?? color}
                     onClick={() => handleColorChange(color)}
                     buttonState={
                       color === product.color ? 'selected' : 'default'
