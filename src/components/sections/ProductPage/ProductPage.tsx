@@ -1,6 +1,5 @@
 import { Grid } from '../../../components/layout/Grid';
 import styles from './ProductPage.module.scss';
-import { useState } from 'react';
 import { Typography } from '../../base/Typography';
 import { Button } from '../../base/Button';
 import { Divider } from '../../base/Divider/Divider';
@@ -60,8 +59,6 @@ export const ProductPage = ({ product }: ProductPageProps) => {
     navigate(`/${product.category}/${newId}`);
   };
 
-  const [isSelected, setIsSelected] = useState(false);
-
   const dispatch = useAppDispatch();
 
   const isInCart = useAppSelector((state) =>
@@ -78,8 +75,6 @@ export const ProductPage = ({ product }: ProductPageProps) => {
     } else {
       dispatch(addToCart(product.id));
     }
-
-    setIsSelected((prev) => !prev);
   };
 
   const handleFavoriteClick = () => {
@@ -189,8 +184,9 @@ export const ProductPage = ({ product }: ProductPageProps) => {
           <div className={styles.buttonWrapper}>
             <Button
               variant="primary"
-              buttonState={isSelected ? 'default' : 'selected'}
               onClick={handleCartClick}
+              disabled={isInCart}
+              buttonState={isInCart ? 'selected' : 'default'}
             >
               {isInCart ? 'Added to cart' : 'Add to cart'}
             </Button>
