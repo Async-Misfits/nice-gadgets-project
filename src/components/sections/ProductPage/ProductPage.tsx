@@ -33,6 +33,7 @@ const colorMap: Record<string, string> = {
   'spaceblack': '#4b4845',
   'rose gold': '#f7d0cb',
   'sky blue': '#87CEEB',
+  'midnight': '#343b43',
 
   'Black': 'black',
   'White': 'white',
