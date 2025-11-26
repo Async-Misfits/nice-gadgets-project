@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { HomePage as HomePageTemplate } from '../../components/Templates/HomePage/HomePage';
+import { HomePageTemplate } from '../../components/Templates/HomePage/HomePageTemplate';
 import type { Product } from '../../types/Product';
 import { useProducts } from '../../hooks/useProducts';
 const BASE = import.meta.env.BASE_URL;
@@ -44,10 +44,6 @@ export const HomePage: FC = () => {
     },
   ];
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
   if (error) {
     return <div>Error: {error}</div>;
   }
@@ -56,6 +52,7 @@ export const HomePage: FC = () => {
       brandNewProducts={brandNewProducts}
       hotPriceProducts={hotPriceProducts}
       categories={categoriesMock}
+      isLoading={loading}
     />
   );
 };

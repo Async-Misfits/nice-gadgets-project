@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import styles from './HomePage.module.scss';
+import styles from './HomePageTemplate.module.scss';
 import { MainSlider } from '../../sections/HomePage/MainSlider/MainSlider';
 import { ProductsCarousel } from '../../ui/ProductsCarousel/ProductsCarousel';
 import { CategoriesSection } from '../../sections/HomePage/CategoriesSection/CategoriesSection';
@@ -17,12 +17,14 @@ type HomePageProps = {
     backgroundColor: string;
     link: string;
   }>;
+  isLoading?: boolean;
 };
 
-export const HomePage: FC<HomePageProps> = ({
+export const HomePageTemplate: FC<HomePageProps> = ({
   brandNewProducts,
   hotPriceProducts,
   categories,
+  isLoading = false,
 }) => {
   return (
     <div className={styles.page}>
@@ -47,6 +49,7 @@ export const HomePage: FC<HomePageProps> = ({
         <ProductsCarousel
           title="Brand new models"
           products={brandNewProducts}
+          isLoading={isLoading}
         />
       </section>
 
@@ -58,6 +61,7 @@ export const HomePage: FC<HomePageProps> = ({
         <ProductsCarousel
           title="Hot prices"
           products={hotPriceProducts}
+          isLoading={isLoading}
         />
       </section>
     </div>

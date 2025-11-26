@@ -54,3 +54,8 @@
   flex: 0 0 auto;
   padding-top: 4px;
 }
+
+.skeletonRow {
+  display: flex;
+  gap: 24px;
+}

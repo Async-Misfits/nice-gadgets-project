@@ -7,11 +7,18 @@ import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { selectCartItems, selectFavoriteIds } from '../../../store/selectors';
 import { addToCart } from '../../../store/cartSlice';
 import { toggleFavorite } from '../../../store/favoritesSlice';
+import { ProductCardSkeleton } from '../ProductCard/ProductCardSkeleton';
 interface ProductsListProps {
   products: Product[];
+  isLoading?: boolean;
+  skeletonCount?: number;
 }
 
-export const ProductsList: React.FC<ProductsListProps> = ({ products }) => {
+export const ProductsList: React.FC<ProductsListProps> = ({
+  products,
+  isLoading = false,
+  skeletonCount = 8,
+}) => {
   const dispatch = useAppDispatch();
 
   const cartItems = useAppSelector(selectCartItems);
@@ -43,21 +50,31 @@ export const ProductsList: React.FC<ProductsListProps> = ({ products }) => {
 
   return (
     <Grid>
-      {products.map((product) => (
-        <div
-          key={product.id}
-          className={styles.cardItem}
-        >
-          <ProductCard
-            product={product}
-            isCatalog
-            toggleFavorite={handleToggleFavorite}
-            addToCart={handleAddToCart}
-            isAdded={isAdded(product.itemId)}
-            isFavorite={isFavorite(product.itemId)}
-          />
-        </div>
-      ))}
+      {isLoading ?
+        Array.from({ length: skeletonCount }).map((_, index) => (
+          <div
+            key={index}
+            className={styles.cardItem}
+          >
+            <ProductCardSkeleton />
+          </div>
+        ))
+      : products.map((product) => (
+          <div
+            key={product.id}
+            className={styles.cardItem}
+          >
+            <ProductCard
+              product={product}
+              isCatalog
+              toggleFavorite={handleToggleFavorite}
+              addToCart={handleAddToCart}
+              isAdded={isAdded(product.itemId)}
+              isFavorite={isFavorite(product.itemId)}
+            />
+          </div>
+        ))
+      }
     </Grid>
   );
 };

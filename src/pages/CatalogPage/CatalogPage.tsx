@@ -156,9 +156,13 @@ export const CatalogPage: React.FC<Props> = ({ category }) => {
         </div>
 
         <div className={styles.gridWrapper}>
-          {loading ?
-            <Typography variant="body">Loading...</Typography>
-          : <ProductsList products={visibleProducts} />}
+          {error ?
+            <Typography variant="body">Error: {error}</Typography>
+          : <ProductsList
+              products={visibleProducts}
+              isLoading={loading}
+            />
+          }
         </div>
 
         {!isAll && !loading && (

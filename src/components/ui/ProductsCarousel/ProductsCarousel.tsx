@@ -16,16 +16,20 @@ import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { selectCartItems, selectFavoriteIds } from '../../../store/selectors';
 import { addToCart } from '../../../store/cartSlice';
 import { toggleFavorite } from '../../../store/favoritesSlice';
+import { ProductCardSkeleton } from '../../base/ProductCard/ProductCardSkeleton';
 
 type ProductsCarouselProps = {
   title: string;
-
   products: Product[];
+  isLoading?: boolean;
+  skeletonCount?: number;
 };
 
 export const ProductsCarousel = ({
   title,
   products,
+  isLoading = false,
+  skeletonCount = 4,
 }: ProductsCarouselProps) => {
   const dispatch = useAppDispatch();
   const swiperRef = useRef<SwiperType | null>(null);
@@ -88,19 +92,14 @@ export const ProductsCarousel = ({
 
   const handleAddToCart = useCallback(
     (productId: string) => {
-      // якщо у вас action називається інакше — заміни тут
       dispatch(addToCart(productId));
-      // або dispatch(cartActions.addItem(product));
     },
     [dispatch],
   );
 
-  // тогл фаворита
   const handleToggleFavorite = useCallback(
     (productId: string) => {
-      // якщо у вас action називається інакше — заміни тут
       dispatch(toggleFavorite(productId));
-      // або dispatch(favoritesActions.toggle(productId));
     },
     [dispatch],
   );
@@ -116,7 +115,7 @@ export const ProductsCarousel = ({
             {title}
           </Typography>
 
-          {showArrows && (
+          {!isLoading && showArrows && (
             <div className={styles.controls}>
               <Button
                 onClick={handlePrev}
@@ -139,27 +138,39 @@ export const ProductsCarousel = ({
       </div>
 
       <div className={styles.sliderItem}>
-        <Swiper
-          onSwiper={handleSwiperInit}
-          slidesPerView="auto"
-          spaceBetween={24}
-        >
-          {products.map((product) => (
-            <SwiperSlide
-              key={product.id}
-              className={styles.slide}
-            >
-              <ProductCard
-                product={product}
-                isCatalog
-                toggleFavorite={handleToggleFavorite}
-                addToCart={handleAddToCart}
-                isAdded={isAdded(product.itemId)}
-                isFavorite={isFavorite(product.itemId)}
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        {isLoading ?
+          <div className={styles.skeletonRow}>
+            {Array.from({ length: skeletonCount }).map((_, index) => (
+              <div
+                key={index}
+                className={styles.slide}
+              >
+                <ProductCardSkeleton />
+              </div>
+            ))}
+          </div>
+        : <Swiper
+            onSwiper={handleSwiperInit}
+            slidesPerView="auto"
+            spaceBetween={24}
+          >
+            {products.map((product) => (
+              <SwiperSlide
+                key={product.id}
+                className={styles.slide}
+              >
+                <ProductCard
+                  product={product}
+                  isCatalog
+                  toggleFavorite={handleToggleFavorite}
+                  addToCart={handleAddToCart}
+                  isAdded={isAdded(product.itemId)}
+                  isFavorite={isFavorite(product.itemId)}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        }
       </div>
     </Grid>
   );
