@@ -40,12 +40,14 @@
   display: flex;
   gap: 16px;
   margin-bottom: 24px;
+  flex-wrap: wrap;
 }
 
 .controlGroup {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  align-self: end;
 
   .label {
     color: var(--color-secondary);
@@ -80,4 +82,19 @@
   display: flex;
   justify-content: center;
   margin-top: 24px;
+}
+
+.searchInput {
+  height: 40px;
+  width: 280px;
+  padding: 0 12px;
+  border-radius: 8px;
+  background: var(--color-surface1);
+  color: var(--color-white);
+  border: 1px solid var(--color-surface2);
+
+  &:focus {
+    border-color: var(--btn-primary);
+    outline: none;
+  }
 }

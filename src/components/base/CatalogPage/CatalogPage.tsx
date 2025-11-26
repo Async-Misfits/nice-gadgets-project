@@ -44,6 +44,7 @@ export const CatalogPage: React.FC<Props> = ({ category }) => {
       }));
   }, [category]);
 
+  const [search, setSearch] = useState('');
   const [sortType, setSortType] = useState<string>(SortType.NEWEST);
   const [itemsPerPage, setItemsPerPage] = useState<number | string>(16);
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -59,14 +60,20 @@ export const CatalogPage: React.FC<Props> = ({ category }) => {
     return getSortedProducts(productsData, sortType);
   }, [sortType, productsData]);
 
+  const filteredProducts = useMemo(() => {
+    return sortedProducts.filter((p) =>
+      p.name.toLowerCase().includes(search.toLowerCase()),
+    );
+  }, [search, sortedProducts]);
+
   const isAll = itemsPerPage === 'all';
-  const limit = isAll ? sortedProducts.length : (itemsPerPage as number);
+  const limit = isAll ? filteredProducts.length : (itemsPerPage as number);
 
   const visibleProducts = useMemo(() => {
     const start = (currentPage - 1) * limit;
     const end = start + limit;
-    return sortedProducts.slice(start, end);
-  }, [sortedProducts, currentPage, limit]);
+    return filteredProducts.slice(start, end);
+  }, [filteredProducts, currentPage, limit]);
 
   const handleSortChange = (value: string | number) => {
     setSortType(value as string);
@@ -92,7 +99,7 @@ export const CatalogPage: React.FC<Props> = ({ category }) => {
             variant="body"
             className={styles.modelsCount}
           >
-            {productsData.length} models
+            {filteredProducts.length} models
           </Typography>
         </div>
 
@@ -128,6 +135,16 @@ export const CatalogPage: React.FC<Props> = ({ category }) => {
               className={styles.dropdownPerPage}
             />
           </div>
+
+          <div className={styles.controlGroup}>
+            <input
+              type="text"
+              value={search}
+              placeholder="I'm searching..."
+              onChange={(e) => setSearch(e.target.value)}
+              className={styles.searchInput}
+            />
+          </div>
         </div>
 
         <div className={styles.gridWrapper}>
@@ -137,7 +154,7 @@ export const CatalogPage: React.FC<Props> = ({ category }) => {
         {!isAll && (
           <div className={styles.paginationWrapper}>
             <Pagination
-              total={productsData.length}
+              total={filteredProducts.length}
               perPage={limit}
               currentPage={currentPage}
               onPageChange={setCurrentPage}
