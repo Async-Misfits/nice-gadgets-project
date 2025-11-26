@@ -1,39 +1,34 @@
 import { ProductPage } from '../../components/sections/ProductPage';
-import rawProducts from '../../api/products.json';
-import phones from '../../api/phones.json';
-import tablets from '../../api/tablets.json';
-import accessories from '../../api/accessories.json';
-import type { ProductDetails } from '../../types/ProductDetails';
 import { ProductsCarousel } from '../../components/ui/ProductsCarousel/ProductsCarousel';
 import { useParams } from 'react-router-dom';
 import { Breadcrumbs } from '../../components/ui/Breadcrumbs/Breadcrumbs';
-import type { Product } from '../../types/Product';
 import { Grid } from '../../components/layout/Grid';
 import styles from './itemPage.module.scss';
 import { ProductNotFound } from '../ProductNotFound/ProductNotFound';
-const BASE = import.meta.env.BASE_URL;
+import { useProductPage } from '../../hooks/useProductPage';
 
 export const ItemPage = () => {
-  const { itemId } = useParams();
+  const { itemId } = useParams<{ itemId: string }>();
 
-  const products = (rawProducts as Product[]).map((p) => ({
-    ...p,
-    image: `${BASE}gadgets/${p.image}`,
-  }));
-  const product = products.find((p) => p.itemId === itemId);
+  const { product, details, related, loading, error } = useProductPage(itemId);
 
-  const fullProduct =
-    phones.find((p) => p.id === itemId) ||
-    tablets.find((p) => p.id === itemId) ||
-    accessories.find((p) => p.id === itemId);
+  if (loading) {
+    return (
+      <Grid>
+        <div className={styles.fullLineWrapper}>Loading...</div>
+      </Grid>
+    );
+  }
 
-  const relatedProducts = products
-    .filter(
-      (p) => p.category === product?.category && p.itemId !== product?.itemId,
-    )
-    .slice(0, 10);
+  if (error) {
+    return (
+      <Grid>
+        <div className={styles.fullLineWrapper}>Error: {error}</div>
+      </Grid>
+    );
+  }
 
-  if (!product) {
+  if (!product || !details) {
     return <ProductNotFound />;
   }
 
@@ -44,11 +39,11 @@ export const ItemPage = () => {
           <Breadcrumbs showBack />
         </div>
       </Grid>
-      <ProductPage product={fullProduct as ProductDetails} />
+      <ProductPage product={details} />
 
       <ProductsCarousel
         title="You may also like"
-        products={relatedProducts}
+        products={related}
       />
     </>
   );

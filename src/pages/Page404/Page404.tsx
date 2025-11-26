@@ -29,7 +29,7 @@ export const Page404 = () => {
         <div className={styles.imageWrapper}>
           <div className={styles.imageBg}></div>
           <img
-            src={`${BASE}/gadgets/img/page-not-found.png`}
+            src={`${BASE}/images/page-not-found.png`}
             alt="404 cat"
             className={styles.image}
           />

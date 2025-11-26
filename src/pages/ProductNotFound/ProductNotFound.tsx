@@ -30,7 +30,7 @@ export const ProductNotFound = () => {
         <div className={styles.imageWrapper}>
           <div className={styles.imageBg}></div>
           <img
-            src={`${BASE}/gadgets/img/product-not-found.png`}
+            src={`${BASE}/images/product-not-found.png`}
             alt="Product not found cat"
             className={styles.image}
           />
