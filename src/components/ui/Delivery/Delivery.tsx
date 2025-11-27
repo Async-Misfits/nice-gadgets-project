@@ -11,9 +11,10 @@ interface CityOption {
 
 interface DeliveryProps {
   productId?: string;
+  onDeliveryMethodChange?: (selectedId: string | null) => void;
 }
 
-export const Delivery: React.FC<DeliveryProps> = () => {
+export const Delivery: React.FC<DeliveryProps> = ({ onDeliveryMethodChange }) => {
   const [selectedCity, setSelectedCity] = useState<CityId>('nyc');
   const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);
 
@@ -23,6 +24,14 @@ export const Delivery: React.FC<DeliveryProps> = () => {
     name: city.id,
     label: city.name,
   }));
+
+  const handleSelectOption = (optionId: string | null) => {
+    setSelectedOptionId(optionId);
+
+    if (onDeliveryMethodChange) {
+      onDeliveryMethodChange(optionId);
+    }
+  };
 
   return (
     <section className="delivery">
@@ -39,7 +48,7 @@ export const Delivery: React.FC<DeliveryProps> = () => {
             onChange={(name) => {
               const cityId = name as CityId;
               setSelectedCity(cityId);
-              setSelectedOptionId(null);
+              handleSelectOption(null);
             }}
             className="delivery__city-dropdown"
           />
@@ -73,7 +82,7 @@ export const Delivery: React.FC<DeliveryProps> = () => {
                 }
                 onClick={() => {
                   if (!option.isAvailable) return;
-                  setSelectedOptionId(option.id);
+                  handleSelectOption(option.id);
                 }}
               >
                 <div className="delivery__option-main">
@@ -82,16 +91,15 @@ export const Delivery: React.FC<DeliveryProps> = () => {
                 </div>
 
                 <div className="delivery__option-side">
-                  {option.isAvailable ?
+                  {option.isAvailable ? (
                     <span className="delivery__option-price">
-                      {option.price === 0 ?
-                        'Free'
-                      : `$${option.price.toFixed(2)}`}
+                      {option.price === 0 ? 'Free' : `$${option.price.toFixed(2)}`}
                     </span>
-                  : <span className="delivery__option-unavailable">
+                  ) : (
+                    <span className="delivery__option-unavailable">
                       Not available
                     </span>
-                  }
+                  )}
                 </div>
 
                 <div className="delivery__option-description">

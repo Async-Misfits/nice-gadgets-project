@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ProductsInCart.scss';
 import { CartItem } from '@/components/ui/CartItem';
 import { Button } from '@/components/base/Button';
@@ -31,6 +31,8 @@ export const ProductsInCart: React.FC<ProductsInCartProps> = ({
 }) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
+  const [isDeliverySelected, setIsDeliverySelected] = useState(false);
 
   const handleIncrease = (itemId: string) => {
     dispatch(addToCart(itemId));
@@ -75,9 +77,19 @@ export const ProductsInCart: React.FC<ProductsInCartProps> = ({
             </Typography>
           </div>
           <div className="products-in-cart__line"></div>
-          <Button onClick={() => navigate('/success')}>Checkout</Button>
+          <Button
+            onClick={() => navigate('/success')}
+            disabled={!isDeliverySelected}
+            buttonState={!isDeliverySelected ? 'selected' : 'default'}
+          >
+            Checkout
+          </Button>
         </div>
-        <Delivery />
+        <Delivery
+          onDeliveryMethodChange={(selectedId) =>
+            setIsDeliverySelected(selectedId !== null)
+          }
+        />
       </div>
     </Grid>
   );
