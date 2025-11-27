@@ -61,8 +61,16 @@ export const CatalogPage: React.FC<Props> = ({ category }) => {
   }, [sortType, productsData]);
 
   const filteredProducts = useMemo(() => {
+    const words = search.toLowerCase().split(' ').filter(Boolean);
+
     return sortedProducts.filter((p) =>
-      p.name.toLowerCase().includes(search.trim().toLowerCase()),
+      words.every(
+        (w) =>
+          p.name.toLowerCase().includes(w) ||
+          p.capacity.toLowerCase().includes(w) ||
+          p.category.toLowerCase().includes(w) ||
+          p.color?.toLowerCase().includes(w),
+      ),
     );
   }, [search, sortedProducts]);
 
@@ -141,7 +149,7 @@ export const CatalogPage: React.FC<Props> = ({ category }) => {
               type="text"
               value={search}
               placeholder="I'm searching..."
-              onChange={(e) => setSearch(e.target.value.trim())}
+              onChange={(e) => setSearch(e.target.value.trimStart())}
               className={styles.searchInput}
             />
           </div>
