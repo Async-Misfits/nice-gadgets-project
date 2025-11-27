@@ -7,13 +7,14 @@ import { FavoritesTemplate } from '../../components/Templates/FavoritesPage/Favo
 import { useProducts } from '../../hooks/useProducts';
 
 export const FavoritesPage: React.FC = () => {
-  const { products } = useProducts();
+  const { products, loading } = useProducts();
   const favoriteProducts = useAppSelector(selectFavoriteProducts(products));
 
   return (
     <FavoritesTemplate
       products={favoriteProducts}
       totalCount={favoriteProducts.length}
+      isLoading={loading}
     />
   );
 };

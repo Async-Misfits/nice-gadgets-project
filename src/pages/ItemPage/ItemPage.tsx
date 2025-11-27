@@ -6,25 +6,39 @@ import { Grid } from '../../components/layout/Grid';
 import styles from './itemPage.module.scss';
 import { ProductNotFound } from '../ProductNotFound/ProductNotFound';
 import { useProductPage } from '../../hooks/useProductPage';
+import { ProductPageSkeleton } from '../../components/sections/ProductPage/ProductPageSkeleton';
 
 export const ItemPage = () => {
   const { itemId } = useParams<{ itemId: string }>();
 
   const { product, details, related, loading, error } = useProductPage(itemId);
 
-  if (loading) {
-    return (
-      <Grid>
-        <div className={styles.fullLineWrapper}>Loading...</div>
-      </Grid>
-    );
-  }
-
   if (error) {
     return (
       <Grid>
         <div className={styles.fullLineWrapper}>Error: {error}</div>
       </Grid>
+    );
+  }
+
+  if (loading && !product && !details) {
+    return (
+      <>
+        <Grid>
+          <div className={styles.fullLineWrapper}>
+            <Breadcrumbs showBack />
+          </div>
+        </Grid>
+
+        <ProductPageSkeleton />
+
+        <ProductsCarousel
+          title="You may also like"
+          products={[]}
+          isLoading
+          skeletonCount={4}
+        />
+      </>
     );
   }
 
@@ -44,6 +58,8 @@ export const ItemPage = () => {
       <ProductsCarousel
         title="You may also like"
         products={related}
+        isLoading={loading}
+        skeletonCount={4}
       />
     </>
   );

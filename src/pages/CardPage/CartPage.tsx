@@ -19,7 +19,7 @@ type CartItemData = {
 };
 
 export const CartPage: React.FC = () => {
-  const { products } = useProducts();
+  const { products, loading, error } = useProducts();
 
   const cartItems = useAppSelector(selectCartItems);
   const totalCount = useAppSelector(selectCartTotalCount);
@@ -48,11 +48,16 @@ export const CartPage: React.FC = () => {
       .filter(Boolean) as CartItemData[];
   }, [cartItems, products]);
 
+  if (error) {
+    return <div style={{ padding: 24 }}>Error: {error}</div>;
+  }
+
   return (
     <CartTemplate
       items={itemsForRender}
       totalCount={totalCount}
       totalPrice={totalPrice}
+      isLoading={loading}
     />
   );
 };

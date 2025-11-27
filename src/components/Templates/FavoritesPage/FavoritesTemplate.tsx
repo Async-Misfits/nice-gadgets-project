@@ -11,11 +11,13 @@ import { ProductsList } from '../../base/ProductsList/ProductsList';
 type Props = {
   products: Product[];
   totalCount: number;
+  isLoading: boolean;
 };
 
 export const FavoritesTemplate: React.FC<Props> = ({
   products,
   totalCount,
+  isLoading = false,
 }) => {
   const isEmpty = totalCount === 0;
 
@@ -59,7 +61,7 @@ export const FavoritesTemplate: React.FC<Props> = ({
                 variant="body"
                 className={styles.emptyText}
               >
-                No favorites yet
+                {isLoading ? 'Loading...' : 'No favorites yet'}
               </Typography>
             : <ProductsList products={products} />}
           </div>
