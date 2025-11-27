@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import styles from './Breadcrumbs.module.scss';
-import { Icon } from '../../base/Icon';
-import { Typography } from '../../base/Typography';
+import { Icon } from '@/components/base/Icon';
+import { Typography } from '@/components/base/Typography';
 
 type BreadcrumbsProps = {
   showBack?: boolean;

@@ -1,12 +1,12 @@
-import { ProductPage } from '../../components/sections/ProductPage';
-import { ProductsCarousel } from '../../components/ui/ProductsCarousel/ProductsCarousel';
+import { ProductPage } from '@/components/Templates/ProductPage';
+import { ProductsCarousel } from '@/components/ui/ProductsCarousel/ProductsCarousel';
 import { useParams } from 'react-router-dom';
-import { Breadcrumbs } from '../../components/ui/Breadcrumbs/Breadcrumbs';
-import { Grid } from '../../components/layout/Grid';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs/Breadcrumbs';
+import { Grid } from '@/components/layout/Grid';
 import styles from './itemPage.module.scss';
 import { ProductNotFound } from '../ProductNotFound/ProductNotFound';
-import { useProductPage } from '../../hooks/useProductPage';
-import { ProductPageSkeleton } from '../../components/sections/ProductPage/ProductPageSkeleton';
+import { useProductPage } from '@/hooks/useProductPage';
+import { ProductPageSkeleton } from '@/components/Templates/ProductPage';
 
 export const ItemPage = () => {
   const { itemId } = useParams<{ itemId: string }>();

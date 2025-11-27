@@ -1,12 +1,12 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { ProductsList } from '../../components/base/ProductsList/ProductsList';
-import Dropdown from '../../components/base/Dropdown/Dropdown';
-import { Pagination } from '../../components/base/Pagination/Pagination';
-import { Breadcrumbs } from '../../components/ui/Breadcrumbs/Breadcrumbs';
-import { Typography } from '../../components/base/Typography/Typography';
+import { ProductsList } from '@/components/layout/ProductsList/ProductsList';
+import { Dropdown } from '@/components/base/Dropdown/Dropdown';
+import { Pagination } from '@/components/layout/Pagination/Pagination';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs/Breadcrumbs';
+import { Typography } from '@/components/base/Typography/Typography';
 import { getSortedProducts, SortType } from './catalogHelper';
 import styles from './CatalogPage.module.scss';
-import { useProducts } from '../../hooks/useProducts';
+import { useProducts } from '@/hooks/useProducts';
 
 const sortOptions = [
   { name: SortType.NEWEST, label: 'Newest' },
@@ -101,7 +101,7 @@ export const CatalogPage: React.FC<Props> = ({ category }) => {
               'Loading...'
             : error ?
               'Error'
-            : `${products.length} models`}
+            : `${filteredProducts.length} models`}
           </Typography>
         </div>
 
@@ -168,7 +168,7 @@ export const CatalogPage: React.FC<Props> = ({ category }) => {
         {!isAll && !loading && (
           <div className={styles.paginationWrapper}>
             <Pagination
-              total={products.length}
+              total={filteredProducts.length}
               perPage={limit}
               currentPage={currentPage}
               onPageChange={setCurrentPage}

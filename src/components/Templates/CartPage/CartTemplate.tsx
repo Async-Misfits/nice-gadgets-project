@@ -1,10 +1,10 @@
 import type React from 'react';
-import ProductsInCart from '../../base/ProductsInCart/ProductsInCart';
-import { Typography } from '../../base/Typography';
+import { ProductsInCart } from '@/components/sections/CartPage/ProductsInCart';
+import { Typography } from '@/components/base/Typography';
 import { Grid } from '../../layout/Grid';
 import { Breadcrumbs } from '../../ui/Breadcrumbs/Breadcrumbs';
 import styles from './CartTemplate.module.scss';
-import { ProductsInCartSkeleton } from '../../base/ProductsInCart/ProductsInCartSkeleton';
+import { ProductsInCartSkeleton } from '../../sections/CartPage/ProductsInCart';
 
 type CartItemData = {
   itemId: string;

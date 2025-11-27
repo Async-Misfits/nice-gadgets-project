@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router';
 
 import styles from './ProductNotFound.module.scss';
-import { Button } from '../../components/base/Button';
-import { Typography } from '../../components/base/Typography';
+import { Button } from '@/components/base/Button';
+import { Typography } from '@/components/base/Typography';
 const BASE = import.meta.env.BASE_URL;
 
 export const ProductNotFound = () => {

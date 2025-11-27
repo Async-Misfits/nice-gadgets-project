@@ -1,8 +1,8 @@
-import { Typography } from '../../components/base/Typography';
-import { Grid } from '../../components/layout/Grid';
+import { Typography } from '@/components/base/Typography';
+import { Grid } from '@/components/layout/Grid';
 import styles from './ContactsPage.module.scss';
-import { Button } from '../../components/base/Button';
-import { Breadcrumbs } from '../../components/ui/Breadcrumbs/Breadcrumbs';
+import { Button } from '@/components/base/Button';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs/Breadcrumbs';
 
 export const ContactsPage = () => {
   return (

@@ -2,11 +2,11 @@
 import React from 'react';
 
 import styles from './FavoritesTemplate.module.scss';
-import type { Product } from '../../../types/Product';
-import { Grid } from '../../layout/Grid';
-import { Breadcrumbs } from '../../ui/Breadcrumbs/Breadcrumbs';
-import { Typography } from '../../base/Typography';
-import { ProductsList } from '../../base/ProductsList/ProductsList';
+import type { Product } from '@/types/Product';
+import { Grid } from '@/components/layout/Grid';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs/Breadcrumbs';
+import { Typography } from '@/components/base/Typography';
+import { ProductsList } from '@/components/layout/ProductsList/ProductsList';
 
 type Props = {
   products: Product[];

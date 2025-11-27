@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import { Link, NavLink } from 'react-router-dom';
-import { Typography } from '../../base/Typography';
+import { Typography } from '@/components/base/Typography';
 // import { Button } from '../../../base/Button';
-import { Icon } from '../../base/Icon/Icon';
+import { Icon } from '@/components/base/Icon';
 import styles from './Header.module.scss';
 import Logo from '@/icons/Logo.svg?react';
-import { MobileMenu } from '../MobileMenu/MobileMenu';
-import { useAppSelector } from '../../../store/hooks';
+import { MobileMenu } from '@/components/layout/MobileMenu';
+import { useAppSelector } from '@/store/hooks';
 
 const navItems = [
   { label: 'Home', href: '/' },

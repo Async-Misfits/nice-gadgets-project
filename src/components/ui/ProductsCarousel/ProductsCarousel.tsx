@@ -4,19 +4,19 @@ import type { Swiper as SwiperType } from 'swiper';
 
 import 'swiper/css';
 
-import { Typography } from '../../base/Typography';
-import ProductCard from '../../base/ProductCard/ProductCard';
+import { Typography } from '@/components/base/Typography';
+import { ProductCard } from '@/components/ui/ProductCard';
 
 import styles from './ProductsCarousel.module.scss';
-import { Button } from '../../base/Button';
-import { Icon } from '../../base/Icon';
-import { Grid } from '../../layout/Grid';
-import type { Product } from '../../../types/Product';
-import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import { selectCartItems, selectFavoriteIds } from '../../../store/selectors';
-import { addToCart } from '../../../store/cartSlice';
-import { toggleFavorite } from '../../../store/favoritesSlice';
-import { ProductCardSkeleton } from '../../base/ProductCard/ProductCardSkeleton';
+import { Button } from '@/components/base/Button';
+import { Icon } from '@/components/base/Icon';
+import { Grid } from '@/components/layout/Grid';
+import type { Product } from '@/types/Product';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { selectCartItems, selectFavoriteIds } from '@/store/selectors';
+import { addToCart } from '@/store/cartSlice';
+import { toggleFavorite } from '@/store/favoritesSlice';
+import { ProductCardSkeleton } from '@/components/ui/ProductCard';
 
 type ProductsCarouselProps = {
   title: string;

@@ -1,10 +1,10 @@
 import React from 'react';
 import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
-import { Icon } from '../../base/Icon/Icon';
+import { Icon } from '@/components/base/Icon';
 import Logo from '@/icons/Logo.svg?react';
 import styles from './MobileMenu.module.scss';
-import { useAppSelector } from '../../../store/hooks';
+import { useAppSelector } from '@/store/hooks';
 
 interface MobileMenuProps {
   isOpen: boolean;

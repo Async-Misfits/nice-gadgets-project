@@ -1,7 +1,7 @@
 import type { FC } from 'react';
-import { HomePageTemplate } from '../../components/Templates/HomePage/HomePageTemplate';
-import type { Product } from '../../types/Product';
-import { useProducts } from '../../hooks/useProducts';
+import { HomePageTemplate } from '@/components/Templates/HomePageTemplate/HomePageTemplate';
+import type { Product } from '@/types/Product';
+import { useProducts } from '@/hooks/useProducts';
 const BASE = import.meta.env.BASE_URL;
 
 export const HomePage: FC = () => {

@@ -1,11 +1,11 @@
-import { Grid } from '../../components/layout/Grid';
-import { Typography } from '../../components/base/Typography';
-import { Button } from '../../components/base/Button';
+import { Grid } from '@/components/layout/Grid';
+import { Typography } from '@/components/base/Typography';
+import { Button } from '@/components/base/Button';
 import styles from './OrderSuccessPage.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useAppDispatch } from '../../store/hooks';
-import { clearCart } from '../../store/cartSlice';
+import { useAppDispatch } from '@/store/hooks';
+import { clearCart } from '@/store/cartSlice';
 
 const generateOrderId = (): string => {
   const rand = () => Math.floor(1000 + Math.random() * 9000);

@@ -3,9 +3,9 @@ import { createRoot } from 'react-dom/client';
 import '@/styles/index.scss';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { Provider } from 'react-redux';
-import { store } from '../store/store.ts';
+import { store } from '@/store/store.ts';
 import { RouterProvider } from 'react-router-dom';
-import { router } from '../routes/AppRouter.tsx';
+import { router } from '@/routes/AppRouter.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

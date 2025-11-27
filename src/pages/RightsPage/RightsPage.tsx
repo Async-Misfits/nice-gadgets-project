@@ -1,8 +1,8 @@
-import { Grid } from '../../components/layout/Grid';
-import { Typography } from '../../components/base/Typography';
-import { Divider } from '../../components/base/Divider/Divider';
+import { Grid } from '@/components/layout/Grid';
+import { Typography } from '@/components/base/Typography';
+import { Divider } from '@/components/base/Divider/Divider';
 import styles from './RightsPage.module.scss';
-import { Breadcrumbs } from '../../components/ui/Breadcrumbs/Breadcrumbs';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs/Breadcrumbs';
 
 export const RightsPage = () => {
   return (

@@ -95,11 +95,11 @@
 
 
 import { Grid } from '../Grid/Grid';
-import { Typography } from '../../base/Typography/Typography';
-import { Button } from '../../base/Button/Button';
+import { Typography } from '@/components/base/Typography';
+import { Button } from '@/components/base/Button';
 import styles from './Footer.module.scss';
-import { Icon } from '../../base/Icon';
-import { Divider } from '../../base/Divider/Divider';
+import { Icon } from '@/components/base/Icon';
+import { Divider } from '@/components/base/Divider';
 import { Link } from 'react-router';
 
 export const Footer = () => {

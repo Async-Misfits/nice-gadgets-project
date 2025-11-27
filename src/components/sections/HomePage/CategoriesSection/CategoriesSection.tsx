@@ -1,8 +1,8 @@
 import type { FC } from 'react';
 import styles from './CategoriesSection.module.scss';
-import { Typography } from '../../../base/Typography';
-import { CategoryCard } from '../../../ui/CategoryCard/CategoryCard';
-import { Grid } from '../../../layout/Grid';
+import { Typography } from '@/components/base/Typography';
+import { CategoryCard } from '@/components/ui/CategoryCard';
+import { Grid } from '@/components/layout/Grid';
 import { Link } from 'react-router';
 
 type Category = {

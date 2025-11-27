@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router';
-import { Button } from '../../components/base/Button';
-import { Typography } from '../../components/base/Typography';
+import { Button } from '@/components/base/Button';
+import { Typography } from '@/components/base/Typography';
 const BASE = import.meta.env.BASE_URL;
 
 import styles from './Page404.module.scss';
