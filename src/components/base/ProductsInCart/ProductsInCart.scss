@@ -30,6 +30,7 @@ $border-radius-checkout: 8px;
     border: 1px solid $color-elements; 
     border-radius: $border-radius-checkout;
     text-align: center;
+    margin-bottom: $gap-vertical;
 }
 
 .products-in-cart__total-info {
