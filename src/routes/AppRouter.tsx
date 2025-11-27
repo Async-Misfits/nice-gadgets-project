@@ -1,14 +1,14 @@
 import { createHashRouter } from 'react-router';
-import App from '../app/App';
-import { HomePage } from '../pages/HomePage/HomePage';
-import { FavoritesPage } from '../pages/FavoritesPage/FavoritesPage';
-import { ItemPage } from '../pages/ItemPage';
-import CatalogPage from '../components/base/CatalogPage/CatalogPage';
-import { CartPage } from '../pages/CardPage/CartPage';
-import { ContactsPage } from '../pages/ContactsPage/ContactsPage';
-import { RightsPage } from '../pages/RightsPage/RightsPage';
-import { Page404 } from '../pages/Page404/Page404';
-import { OrderSuccessPage } from '../pages/OrderSuccessPage/OrderSuccessPage';
+import App from '@/app/App';
+import { HomePage } from '@/pages/HomePage/HomePage';
+import { FavoritesPage } from '@/pages/FavoritesPage/FavoritesPage';
+import { ItemPage } from '@/pages/ItemPage';
+import CatalogPage from '@/pages/CatalogPage/CatalogPage';
+import { CartPage } from '@/pages/CartPage/CartPage';
+import { ContactsPage } from '@/pages/ContactsPage/ContactsPage';
+import { RightsPage } from '@/pages/RightsPage/RightsPage';
+import { Page404 } from '@/pages/Page404/Page404';
+import { OrderSuccessPage } from '@/pages/OrderSuccessPage/OrderSuccessPage';
 
 export const router = createHashRouter([
   {

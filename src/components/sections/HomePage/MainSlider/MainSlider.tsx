@@ -1,12 +1,12 @@
 import { useRef, useState } from 'react';
 import type { Swiper as SwiperType } from 'swiper';
-import { Slider } from '../../../base/Slider/Slider';
-import { PromoSlide } from '../../../base/PromoSlide/PromoSlide';
-import { Grid } from '../../../layout/Grid';
+import { Slider } from '@/components/base/Slider';
+import { PromoSlide } from '@/components/ui/PromoSlide';
+import { Grid } from '@/components/layout/Grid';
 import styles from './MainSlider.module.scss';
-import { Icon } from '../../../base/icons';
-import { SliderDots } from '../../../base/SliderDots/SliderDots';
-import { Button } from '../../../base/Button';
+import { Icon } from '@/components/base/Icon';
+import { SliderDots } from '@/components/base/SliderDots';
+import { Button } from '@/components/base/Button';
 const BASE = import.meta.env.BASE_URL;
 
 export const MainSlider = () => {

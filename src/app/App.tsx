@@ -1,8 +1,8 @@
 import { Outlet } from 'react-router';
-import { Header } from '../components/layout/Header/Header';
-import { Footer } from '../components/layout/Footer/Footer';
+import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
 import './App.css';
-import { ScrollToTop } from '../components/layout/ScrollToTop/ScrollToTop';
+import { ScrollToTop } from '@/components/layout/ScrollToTop';
 
 function App() {
   return (

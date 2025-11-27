@@ -6,7 +6,7 @@ export interface ProductDescriptionBlock {
 }
 
 export interface ProductDetails {
-  id: string; // в деталях це строка типу "apple-iphone-14-256gb-yellow"
+  id: string;
   category: Category;
   namespaceId: string;
   name: string;

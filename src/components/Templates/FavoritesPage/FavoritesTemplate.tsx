@@ -2,20 +2,22 @@
 import React from 'react';
 
 import styles from './FavoritesTemplate.module.scss';
-import type { Product } from '../../../types/Product';
-import { Grid } from '../../layout/Grid';
-import { Breadcrumbs } from '../../ui/Breadcrumbs/Breadcrumbs';
-import { Typography } from '../../base/Typography';
-import { ProductsList } from '../../base/ProductsList/ProductsList';
+import type { Product } from '@/types/Product';
+import { Grid } from '@/components/layout/Grid';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs/Breadcrumbs';
+import { Typography } from '@/components/base/Typography';
+import { ProductsList } from '@/components/layout/ProductsList/ProductsList';
 
 type Props = {
   products: Product[];
   totalCount: number;
+  isLoading: boolean;
 };
 
 export const FavoritesTemplate: React.FC<Props> = ({
   products,
   totalCount,
+  isLoading = false,
 }) => {
   const isEmpty = totalCount === 0;
 
@@ -59,7 +61,7 @@ export const FavoritesTemplate: React.FC<Props> = ({
                 variant="body"
                 className={styles.emptyText}
               >
-                No favorites yet
+                {isLoading ? 'Loading...' : 'No favorites yet'}
               </Typography>
             : <ProductsList products={products} />}
           </div>

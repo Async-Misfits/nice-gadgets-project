@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import styles from './CategoryCard.module.scss';
-import { Typography } from '../../base/Typography';
+import { Typography } from '@/components/base/Typography';
 
 type CategoryCardProps = {
   imageSrc: string;

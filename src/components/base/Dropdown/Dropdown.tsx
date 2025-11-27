@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './Dropdown.scss';
-import { Typography } from '../Typography';
+import { Typography } from '@/components/base/Typography';
 
 interface DropdownOption {
   name: string | number;
@@ -26,7 +26,7 @@ interface DropdownProps {
  * @param {string} [props.className=''] - An optional custom CSS class for styling the dropdown container.
  */
 
-const Dropdown: React.FC<DropdownProps> = ({
+export const Dropdown: React.FC<DropdownProps> = ({
   options,
   placeholder,
   value,
@@ -110,5 +110,3 @@ const Dropdown: React.FC<DropdownProps> = ({
     </div>
   );
 };
-
-export default Dropdown;

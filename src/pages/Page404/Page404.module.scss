@@ -29,8 +29,6 @@
   max-width: 460px;
 }
 
-/* ---------- Зображення + фон ---------- */
-
 .imageWrapper {
   position: relative;
   width: fit-content;
@@ -49,7 +47,6 @@
   filter: blur(24px);
 }
 
-/* Анімація "плавання" */
 .image {
   width: clamp(240px, 50vw, 360px);
   animation: catFloat 3.5s ease-in-out infinite;

@@ -1,9 +1,10 @@
 import type React from 'react';
-import ProductsInCart from '../../base/ProductsInCart/ProductsInCart';
-import { Typography } from '../../base/Typography';
+import { ProductsInCart } from '@/components/sections/CartPage/ProductsInCart';
+import { Typography } from '@/components/base/Typography';
 import { Grid } from '../../layout/Grid';
 import { Breadcrumbs } from '../../ui/Breadcrumbs/Breadcrumbs';
 import styles from './CartTemplate.module.scss';
+import { ProductsInCartSkeleton } from '../../sections/CartPage/ProductsInCart';
 
 type CartItemData = {
   itemId: string;
@@ -18,14 +19,16 @@ type Props = {
   items: CartItemData[];
   totalCount: number;
   totalPrice: number;
+  isLoading?: boolean;
 };
 
 export const CartTemplate: React.FC<Props> = ({
   items,
   totalCount,
   totalPrice,
+  isLoading = false,
 }) => {
-  const isEmpty = totalCount === 0;
+  const isEmpty = !isLoading && totalCount === 0;
 
   return (
     <main className={styles.page}>
@@ -54,7 +57,9 @@ export const CartTemplate: React.FC<Props> = ({
 
       {/* Content */}
       <section className={styles.sectionSpacing}>
-        {isEmpty ?
+        {isLoading ?
+          <ProductsInCartSkeleton />
+        : isEmpty ?
           <Grid>
             <div className={styles.listWrapper}>
               <Typography
@@ -65,13 +70,11 @@ export const CartTemplate: React.FC<Props> = ({
               </Typography>
             </div>
           </Grid>
-        : <>
-            <ProductsInCart
-              items={items}
-              totalCount={totalCount}
-              totalPrice={totalPrice}
-            />
-          </>
+        : <ProductsInCart
+            items={items}
+            totalCount={totalCount}
+            totalPrice={totalPrice}
+          />
         }
       </section>
     </main>
