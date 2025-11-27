@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '../Button/Button';
 import styles from './Pagination.module.scss';
-import { Icon } from '../icons';
+import { Icon } from '../Icon';
 
 interface PaginationProps {
   total: number;

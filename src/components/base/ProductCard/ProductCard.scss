@@ -8,60 +8,59 @@
   padding: 32px;
   box-sizing: border-box;
 
-  height: 442px; 
+  height: 442px;
   width: 212px;
   flex-shrink: 0;
 
   position: relative;
-  transition: 
-    transform 0.2s ease-in-out, 
+  transition:
+    transform 0.2s ease-in-out,
     box-shadow 0.2s ease-in-out,
-
     background-color 0.2s ease-in-out;
-  
+
   &:hover {
     transform: translateY(-4px);
     z-index: 10;
-    box-shadow: 4px 8px 15px #75767F;
+    box-shadow: 4px 8px 15px #75767f;
 
-    background-color: #0F1121; 
+    background-color: #0f1121;
   }
-  
+
   &__link {
     text-decoration: none;
-    display: block; 
+    display: block;
     width: 100%;
     height: 100%;
-    display: flex; 
+    display: flex;
     justify-content: center;
     align-items: center;
   }
-  
+
   &__top {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 129px; 
+    height: 129px;
     margin-bottom: 6px;
   }
 
   &__image {
-    height: auto; 
+    height: auto;
     max-height: 100%;
     width: auto;
     max-width: 100%;
     object-fit: contain;
   }
-  
+
   &__title {
     height: 58px;
     display: flex;
     align-items: flex-end;
     margin-bottom: 6px;
 
-      &:hover {
-      color: #A378FF;
+    &:hover {
+      color: #a378ff;
     }
   }
 
@@ -77,10 +76,10 @@
   }
 
   &__priceDiscount {
-    color:#75767F;
+    color: #75767f;
     text-decoration: line-through;
   }
-  
+
   &__line {
     width: 100%;
     height: 1px;
@@ -100,9 +99,9 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-    
-    &--title{
-      color: #75767F;
+
+    &--title {
+      color: #75767f;
     }
   }
 
@@ -110,28 +109,27 @@
     width: 100%;
     display: flex;
     gap: 8px;
-    
+
     :global(.icon) {
-        width: 40px !important;
-        min-width: 40px !important;
-        flex-shrink: 0 !important;
+      width: 40px !important;
+      min-width: 40px !important;
+      flex-shrink: 0 !important;
     }
   }
-  
+
   &--catalog {
     height: 440px;
     width: 100%;
     min-width: 210px;
     max-width: 300px;
-    flex-shrink: 1; 
+    flex-shrink: 1;
   }
 
   @media (min-width: 640px) {
-    
     &__top {
-        height: 202px;
+      height: 202px;
     }
-    
+
     height: 512px;
     width: 237px;
     flex-shrink: 0;
@@ -139,18 +137,17 @@
     &--catalog {
       height: 512px;
       width: 100%;
-      min-width: 220px; 
+      min-width: 220px;
       max-width: 290px;
       flex-shrink: 1;
     }
   }
 
   @media (min-width: 1200px) {
-    
     &__top {
-        height: 196px;
+      height: 196px;
     }
-    
+
     height: 506px;
     width: 272px;
     flex-shrink: 0;

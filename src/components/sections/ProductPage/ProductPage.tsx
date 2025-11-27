@@ -3,7 +3,7 @@ import styles from './ProductPage.module.scss';
 import { Typography } from '../../base/Typography';
 import { Button } from '../../base/Button';
 import { Divider } from '../../base/Divider/Divider';
-import { Icon } from '../../base/icons';
+import { Icon } from '../../base/Icon';
 import type { ProductDetails } from '../../../types/ProductDetails';
 import { Gallery } from '../../base/Gallery/Gallery';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';

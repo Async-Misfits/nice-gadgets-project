@@ -4,7 +4,7 @@ import { Slider } from '../../../base/Slider/Slider';
 import { PromoSlide } from '../../../base/PromoSlide/PromoSlide';
 import { Grid } from '../../../layout/Grid';
 import styles from './MainSlider.module.scss';
-import { Icon } from '../../../base/icons';
+import { Icon } from '../../../base/Icon';
 import { SliderDots } from '../../../base/SliderDots/SliderDots';
 import { Button } from '../../../base/Button';
 const BASE = import.meta.env.BASE_URL;

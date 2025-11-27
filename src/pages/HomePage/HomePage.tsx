@@ -11,7 +11,6 @@ export const HomePage: FC = () => {
     .sort((a, b) => b.year - a.year)
     .slice(0, 10);
 
-  // HOT PRICE — найбільша знижка: fullPrice - price
   const hotPriceProducts: Product[] = [...products]
     .sort((a, b) => {
       const discountA = a.fullPrice - a.price;

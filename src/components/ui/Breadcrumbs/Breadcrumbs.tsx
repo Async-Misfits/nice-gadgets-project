@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import styles from './Breadcrumbs.module.scss';
-import { Icon } from '../../base/icons';
+import { Icon } from '../../base/Icon';
 import { Typography } from '../../base/Typography';
 
 type BreadcrumbsProps = {

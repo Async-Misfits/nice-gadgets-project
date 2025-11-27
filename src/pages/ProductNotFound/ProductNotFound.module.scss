@@ -29,8 +29,6 @@
   max-width: 460px;
 }
 
-/* ---------- Зображення + glow background ---------- */
-
 .imageWrapper {
   position: relative;
   width: fit-content;
@@ -49,7 +47,6 @@
   filter: blur(24px);
 }
 
-/* Плавна «гойдалка» */
 .image {
   width: clamp(240px, 55vw, 380px);
   animation: catSwing 3.2s ease-in-out infinite;

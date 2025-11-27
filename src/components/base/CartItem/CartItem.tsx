@@ -1,7 +1,7 @@
 import React from 'react';
 import './CartItem.scss';
 import { Typography } from '../Typography';
-import { Icon } from '../icons';
+import { Icon } from '../Icon';
 import { Button } from '../Button';
 import { Link } from 'react-router';
 

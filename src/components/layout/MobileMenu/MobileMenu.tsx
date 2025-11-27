@@ -1,8 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
-import { Icon } from '../../base/icons/Icon';
-import Logo from '../../../../public/icons/Logo.svg?react';
+import { Icon } from '../../base/Icon/Icon';
+import Logo from '@/icons/Logo.svg?react';
 import styles from './MobileMenu.module.scss';
 import { useAppSelector } from '../../../store/hooks';
 

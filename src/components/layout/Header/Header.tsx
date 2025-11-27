@@ -3,9 +3,9 @@ import classNames from 'classnames';
 import { Link, NavLink } from 'react-router-dom';
 import { Typography } from '../../base/Typography';
 // import { Button } from '../../../base/Button';
-import { Icon } from '../../base/icons/Icon';
+import { Icon } from '../../base/Icon/Icon';
 import styles from './Header.module.scss';
-import Logo from '../../../../public/icons/Logo.svg?react';
+import Logo from '@/icons/Logo.svg?react';
 import { MobileMenu } from '../MobileMenu/MobileMenu';
 import { useAppSelector } from '../../../store/hooks';
 
@@ -62,14 +62,14 @@ export const Header: React.FC = () => {
                 className={styles.iconBtnOverride}
                 iconButton={<Icon name="heart" size={16} />}
               >
-                
+
               </Button>
             </div>
-            
+
             <div className={styles.actionButton}>
               <Button
                 type="button"
-                className={styles.iconBtnOverride} 
+                className={styles.iconBtnOverride}
               >
                 <Icon name="mail" size={16} badgeCount={2} />
               </Button>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '../Button';
-import { Icon } from '../icons';
+import { Icon } from '../Icon';
 import classNames from 'classnames';
 import { Typography } from '../Typography';
 import './ProductCard.scss';
@@ -30,7 +30,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
   isAdded = false,
   isFavorite = false,
 }) => {
-
   const productLink = `/${product.category}/${product.itemId}`;
   return (
     <article className={classNames('card', { 'card--catalog': isCatalog })}>

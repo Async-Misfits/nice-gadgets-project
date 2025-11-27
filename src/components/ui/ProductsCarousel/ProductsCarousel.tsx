@@ -9,7 +9,7 @@ import ProductCard from '../../base/ProductCard/ProductCard';
 
 import styles from './ProductsCarousel.module.scss';
 import { Button } from '../../base/Button';
-import { Icon } from '../../base/icons';
+import { Icon } from '../../base/Icon';
 import { Grid } from '../../layout/Grid';
 import type { Product } from '../../../types/Product';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
