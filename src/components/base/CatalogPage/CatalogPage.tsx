@@ -46,7 +46,7 @@ export const CatalogPage: React.FC<Props> = ({ category }) => {
 
   const [search, setSearch] = useState('');
   const [sortType, setSortType] = useState<string>(SortType.NEWEST);
-  const [itemsPerPage, setItemsPerPage] = useState<number | string>(16);
+  const [itemsPerPage, setItemsPerPage] = useState<number | string>(12);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
   useEffect(() => {
