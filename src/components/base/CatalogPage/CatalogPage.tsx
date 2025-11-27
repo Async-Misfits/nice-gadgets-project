@@ -17,9 +17,9 @@ const sortOptions = [
 ];
 
 const perPageOptions = [
-  { name: 8, label: '8' },
-  { name: 16, label: '16' },
-  { name: 32, label: '32' },
+  { name: 12, label: '12' },
+  { name: 24, label: '24' },
+  { name: 36, label: '36' },
 ];
 
 const categoryTitles: Record<string, string> = {
