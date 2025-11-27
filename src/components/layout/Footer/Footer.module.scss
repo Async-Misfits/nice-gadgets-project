@@ -15,22 +15,22 @@
   }
 }
 
-///////test for mobile
-
-.topContent {
+.topBar {
   grid-column: 1 / -1;
   display: flex;
   align-items: center;
   min-height: 40px;
-}
-
-////////test
-
-.topContent {
   @include tablet {
     grid-column: 2 / 3;
   }
 }
+
+
+// .topContent {
+//   @include tablet {
+//     grid-column: 2 / 3;
+//   }
+// }
 
 .bottom {
   width: 100%;
