@@ -51,17 +51,46 @@ export const CatalogPage: React.FC<Props> = ({ category }) => {
   }, [sortType, products]);
 
   const filteredProducts = useMemo(() => {
-    const words = search.toLowerCase().split(' ').filter(Boolean);
+    const q = search.toLowerCase();
 
-    return sortedProducts.filter((p) =>
-      words.every(
-        (w) =>
-          p.name.toLowerCase().includes(w) ||
-          p.capacity.toLowerCase().includes(w) ||
-          p.category.toLowerCase().includes(w) ||
-          p.color?.toLowerCase().includes(w),
-      ),
-    );
+    if (!q.trim()) return sortedProducts;
+
+    const isStrict = q.startsWith(' ') && q.endsWith(' ');
+    const clean = q.trim();
+    const words = clean.split(/\s+/);
+
+    return sortedProducts.filter((p) => {
+      const name = p.name.toLowerCase();
+      const category = p.category.toLowerCase();
+      const color = (p.color || '').toLowerCase();
+      const capacity = p.capacity.toLowerCase();
+
+      const modelNumber = name.match(/\d+/)?.[0] || '';
+      const capacityNumber = capacity.replace(/\D+/g, '');
+
+      return words.every((word) => {
+        const isNumber = /^\d+$/.test(word);
+
+        if (isStrict) {
+          if (isNumber) {
+            return modelNumber === word || capacityNumber === word;
+          }
+          return (
+            name.split(/\s+/).includes(word) ||
+            color === word ||
+            category === word
+          );
+        }
+
+        if (isNumber) {
+          return modelNumber.includes(word) || capacityNumber.includes(word);
+        }
+
+        return (
+          name.includes(word) || color.includes(word) || category.includes(word)
+        );
+      });
+    });
   }, [search, sortedProducts]);
 
   const isAll = itemsPerPage === 'all';
